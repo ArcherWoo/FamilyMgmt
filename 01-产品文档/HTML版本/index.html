@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>家庭生活AI助手 - 产品文档中心</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+        
+        .header .version {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+        
+        .overview {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .overview h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .core-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .feature-card {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .feature-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .docs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+        
+        .doc-card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border-top: 4px solid #667eea;
+        }
+        
+        .doc-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        
+        .doc-card h3 {
+            color: #667eea;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .doc-card .icon {
+            font-size: 1.8rem;
+            margin-right: 10px;
+        }
+        
+        .doc-card p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+        
+        .doc-card .features {
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        
+        .doc-card .features li {
+            padding: 5px 0;
+            color: #555;
+        }
+        
+        .doc-card .features li:before {
+            content: "✓";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 8px;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 24px;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+        
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .stat-card .number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .stat-card .label {
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 50px;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .docs-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 家庭生活AI助手</h1>
+            <div class="subtitle">AI驱动的家庭生活规划专家</div>
+            <div class="version">产品文档中心 | V2.0 | 2025-06-27</div>
+        </div>
+        
+        <div class="overview">
+            <h2>📋 产品概述</h2>
+            <p>家庭生活AI助手是一款界面极简的AI驱动家庭生活规划应用，专注解决三个核心生活场景：<strong>每天吃什么</strong>、<strong>每天运动什么</strong>、<strong>每天穿什么</strong>。通过与大模型AI的智能对话，为家庭提供个性化的生活规划建议，并支持全家共享和协作。</p>
+            
+            <div class="core-features">
+                <div class="feature-card">
+                    <h3>🍽️ 智能饮食规划</h3>
+                    <p>AI对话理解身体状况，生成个性化饮食计划，智能制作菜谱，一键生成购物清单</p>
+                </div>
+                <div class="feature-card">
+                    <h3>🏃 智能运动推荐</h3>
+                    <p>基于健康数据推荐个性化运动方案，连接健康设备，家庭运动计划协调</p>
+                </div>
+                <div class="feature-card">
+                    <h3>👔 智能穿搭建议</h3>
+                    <p>根据天气、场合、运动安排智能推荐穿搭，学习个人风格偏好</p>
+                </div>
+                <div class="feature-card">
+                    <h3>👨‍👩‍👧‍👦 全家协作</h3>
+                    <p>计划实时同步，家庭成员无缝协作，智能分工提醒</p>
+                </div>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-card">
+                    <div class="number">3</div>
+                    <div class="label">核心场景</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">85%</div>
+                    <div class="label">决策疲劳用户</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">78%</div>
+                    <div class="label">AI接受度</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">94%</div>
+                    <div class="label">家庭协作需求</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="docs-grid">
+            <div class="doc-card">
+                <h3><span class="icon">📖</span>PRD文档</h3>
+                <p>完整的产品需求文档，详细描述AI驱动的三个核心场景设计、技术架构和商业模式。</p>
+                <ul class="features">
+                    <li>AI功能设计与交互流程</li>
+                    <li>三场景详细设计</li>
+                    <li>MCP生态集成方案</li>
+                    <li>商业模式与产品路线图</li>
+                </ul>
+                <a href="prd.html" class="btn">查看PRD文档</a>
+            </div>
+            
+            <div class="doc-card">
+                <h3><span class="icon">🔍</span>用户研究</h3>
+                <p>基于三场景的深度用户研究，包含用户画像分析和需求调研报告。</p>
+                <ul class="features">
+                    <li>三场景用户痛点分析</li>
+                    <li>AI使用习惯调研</li>
+                    <li>家庭协作模式研究</li>
+                    <li>商业化需求分析</li>
+                </ul>
+                <a href="user-research.html" class="btn">查看用户研究</a>
+            </div>
+            
+            <div class="doc-card">
+                <h3><span class="icon">🏆</span>竞品分析</h3>
+                <p>AI助手和生活规划类产品的全面竞品分析，识别市场机会和差异化策略。</p>
+                <ul class="features">
+                    <li>AI助手类产品分析</li>
+                    <li>生活规划类产品对比</li>
+                    <li>市场空白识别</li>
+                    <li>竞争策略建议</li>
+                </ul>
+                <a href="competitive-analysis.html" class="btn">查看竞品分析</a>
+            </div>
+            
+            <div class="doc-card">
+                <h3><span class="icon">📋</span>需求分析</h3>
+                <p>详细的功能需求规格说明书，突出AI智能助手的核心作用和技术实现。</p>
+                <ul class="features">
+                    <li>AI功能需求规格</li>
+                    <li>三场景功能设计</li>
+                    <li>MCP协议集成需求</li>
+                    <li>非功能性需求</li>
+                </ul>
+                <a href="requirements.html" class="btn">查看需求分析</a>
+            </div>
+            
+            <div class="doc-card">
+                <h3><span class="icon">🗺️</span>产品规划</h3>
+                <p>AI能力演进路线图和产品发展规划，从MVP到智能生活助理的完整路径。</p>
+                <ul class="features">
+                    <li>AI能力演进路径</li>
+                    <li>四阶段发展规划</li>
+                    <li>关键里程碑</li>
+                    <li>资源配置计划</li>
+                </ul>
+                <a href="roadmap.html" class="btn">查看产品规划</a>
+            </div>
+            
+            <div class="doc-card">
+                <h3><span class="icon">📊</span>产品概览</h3>
+                <p>产品文档导航和概览信息，快速了解产品定位和文档结构。</p>
+                <ul class="features">
+                    <li>产品定位与价值</li>
+                    <li>AI核心能力</li>
+                    <li>文档结构导航</li>
+                    <li>角色导航指南</li>
+                </ul>
+                <a href="overview.html" class="btn">查看产品概览</a>
+            </div>
+
+            <div class="doc-card">
+                <h3><span class="icon">🤖</span>AI生态调研</h3>
+                <p>2024-2025年AI Agent平台和MCP服务的全面调研分析，为技术选型提供详实数据支撑。</p>
+                <ul class="features">
+                    <li>AI Agent平台对比分析</li>
+                    <li>MCP服务生态调研</li>
+                    <li>成本效益分析</li>
+                    <li>技术选型建议</li>
+                </ul>
+                <a href="ai-ecosystem-research.html" class="btn">查看AI生态调研</a>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>© 2025 家庭生活AI助手 | 让AI成为每个家庭的生活规划专家</p>
+            <p>最后更新：2025-06-27 | 版本：V2.0 AI驱动重构版</p>
+        </div>
+    </div>
+</body>
+</html>

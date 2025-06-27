@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>家庭生活AI助手 - PRD文档</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f7fa;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .navbar h1 {
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .navbar .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .navbar .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: background 0.3s ease;
+        }
+        
+        .navbar .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        
+        .doc-header {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .doc-header h1 {
+            color: #667eea;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .doc-header .subtitle {
+            color: #666;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .doc-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        
+        .doc-info-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .doc-info-item .label {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+        
+        .doc-info-item .value {
+            color: #555;
+        }
+        
+        .toc {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .toc h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+        }
+        
+        .toc-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .toc-section {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+        
+        .toc-section h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+        }
+        
+        .toc-section ul {
+            list-style: none;
+        }
+        
+        .toc-section ul li {
+            padding: 5px 0;
+        }
+        
+        .toc-section ul li a {
+            color: #555;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .toc-section ul li a:hover {
+            color: #667eea;
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .content-section h2 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+        
+        .content-section h3 {
+            color: #555;
+            margin: 25px 0 15px 0;
+        }
+        
+        .content-section h4 {
+            color: #667eea;
+            margin: 20px 0 10px 0;
+        }
+        
+        .content-section p {
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+        
+        .content-section ul, .content-section ol {
+            margin: 15px 0 15px 20px;
+        }
+        
+        .content-section li {
+            margin-bottom: 8px;
+        }
+        
+        .highlight-box {
+            background: linear-gradient(135deg, #667eea10 0%, #764ba210 100%);
+            border-left: 4px solid #667eea;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 5px;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .feature-card {
+            background: #f8f9ff;
+            padding: 20px;
+            border-radius: 10px;
+            border-top: 3px solid #667eea;
+        }
+        
+        .feature-card h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .code-block {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 15px 0;
+            overflow-x: auto;
+            font-family: 'Courier New', monospace;
+            line-height: 1.5;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        tr:hover {
+            background: #f8f9ff;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #667eea;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            transition: transform 0.3s ease;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 768px) {
+            .navbar .nav-links {
+                display: none;
+            }
+            
+            .doc-header h1 {
+                font-size: 2rem;
+            }
+            
+            .toc-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1>🤖 家庭生活AI助手 - PRD文档</h1>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="overview.html">产品概览</a>
+                <a href="user-research.html">用户研究</a>
+                <a href="competitive-analysis.html">竞品分析</a>
+                <a href="requirements.html">需求分析</a>
+                <a href="roadmap.html">产品规划</a>
+                <a href="ai-ecosystem-research.html">AI生态调研</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="doc-header">
+            <h1>家庭生活AI助手 PRD</h1>
+            <div class="subtitle">Product Requirements Document</div>
+            
+            <div class="doc-info">
+                <div class="doc-info-item">
+                    <div class="label">文档版本</div>
+                    <div class="value">V2.0</div>
+                </div>
+                <div class="doc-info-item">
+                    <div class="label">创建日期</div>
+                    <div class="value">2025-06-27</div>
+                </div>
+                <div class="doc-info-item">
+                    <div class="label">产品经理</div>
+                    <div class="value">AI Product Manager</div>
+                </div>
+                <div class="doc-info-item">
+                    <div class="label">产品定位</div>
+                    <div class="value">AI驱动的家庭生活规划助手</div>
+                </div>
+                <div class="doc-info-item">
+                    <div class="label">核心场景</div>
+                    <div class="value">每天吃什么 | 每天运动什么 | 每天穿什么</div>
+                </div>
+                <div class="doc-info-item">
+                    <div class="label">开发周期</div>
+                    <div class="value">16周</div>
+                </div>
+                <div class="doc-info-item">
+                    <div class="label">预算范围</div>
+                    <div class="value">80-120万元</div>
+                </div>
+                <div class="doc-info-item">
+                    <div class="label">发布时间</div>
+                    <div class="value">2025年Q4</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="toc">
+            <h2>📋 文档目录</h2>
+            <div class="toc-grid">
+                <div class="toc-section">
+                    <h3>第一部分：产品战略</h3>
+                    <ul>
+                        <li><a href="#product-overview">1. 产品概述</a></li>
+                        <li><a href="#market-analysis">2. 市场分析</a></li>
+                        <li><a href="#user-analysis">3. 用户分析</a></li>
+                        <li><a href="#product-positioning">4. 产品定位</a></li>
+                    </ul>
+                </div>
+                <div class="toc-section">
+                    <h3>第二部分：AI核心能力</h3>
+                    <ul>
+                        <li><a href="#ai-design">5. AI功能设计</a></li>
+                        <li><a href="#scenarios">6. 三场景详细设计</a></li>
+                        <li><a href="#mcp-integration">7. MCP生态集成</a></li>
+                        <li><a href="#tech-architecture">8. 技术架构</a></li>
+                    </ul>
+                </div>
+                <div class="toc-section">
+                    <h3>第三部分：产品规划</h3>
+                    <ul>
+                        <li><a href="#business-model">9. 商业模式</a></li>
+                        <li><a href="#roadmap">10. 产品路线图</a></li>
+                        <li><a href="#risk-assessment">11. 风险评估</a></li>
+                        <li><a href="#success-metrics">12. 成功指标</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section" id="product-overview">
+            <h2>1. 产品概述</h2>
+            
+            <h3>1.1 产品愿景</h3>
+            <div class="highlight-box">
+                <strong>"让AI成为每个家庭的生活规划专家"</strong>
+                <p>通过AI智能对话，为家庭提供个性化的饮食、运动、穿搭规划建议，让生活决策更简单，让家庭协作更和谐。</p>
+            </div>
+            
+            <h3>1.2 产品使命</h3>
+            <ul>
+                <li><strong>简化生活决策</strong>：用AI对话替代复杂的规划操作</li>
+                <li><strong>提升生活品质</strong>：基于个性化数据提供科学建议</li>
+                <li><strong>促进家庭和谐</strong>：通过共享规划增进家庭协作</li>
+                <li><strong>连接生活服务</strong>：通过MCP协议打通生活服务生态</li>
+            </ul>
+            
+            <h3>1.3 核心价值</h3>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>🤖 AI智能化</h4>
+                    <p>3秒生成个性化生活规划建议</p>
+                </div>
+                <div class="feature-card">
+                    <h4>⚡ 极简交互</h4>
+                    <p>通过对话完成复杂规划，操作步骤<3步</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🎯 三场景聚焦</h4>
+                    <p>专注解决饮食、运动、穿搭三个核心痛点</p>
+                </div>
+                <div class="feature-card">
+                    <h4>👨‍👩‍👧‍👦 全家共享</h4>
+                    <p>计划实时同步，家庭成员无缝协作</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🔗 生态连接</h4>
+                    <p>MCP协议连接购物、健康、天气等外部服务</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section" id="market-analysis">
+            <h2>2. 市场分析</h2>
+
+            <h3>2.1 市场规模</h3>
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>市场层级</th>
+                        <th>市场描述</th>
+                        <th>市场规模</th>
+                    </tr>
+                    <tr>
+                        <td>TAM（总体市场）</td>
+                        <td>中国AI助手市场</td>
+                        <td>约500亿元</td>
+                    </tr>
+                    <tr>
+                        <td>SAM（可服务市场）</td>
+                        <td>生活规划AI助手</td>
+                        <td>约50亿元</td>
+                    </tr>
+                    <tr>
+                        <td>SOM（可获得市场）</td>
+                        <td>家庭生活AI助手</td>
+                        <td>约5亿元</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h3>2.2 市场趋势</h3>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>📈 AI助手普及</h4>
+                    <p>ChatGPT等产品教育市场，用户接受度快速提升</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🏠 生活品质需求</h4>
+                    <p>年轻家庭对生活品质要求越来越高</p>
+                </div>
+                <div class="feature-card">
+                    <h4>🧠 决策疲劳问题</h4>
+                    <p>现代人面临选择过多，需要AI辅助决策</p>
+                </div>
+                <div class="feature-card">
+                    <h4>👥 家庭协作需求</h4>
+                    <p>双职工家庭需要更好的协作工具</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section" id="user-analysis">
+            <h2>3. 用户分析</h2>
+
+            <h3>3.1 目标用户画像</h3>
+
+            <h4>核心用户：品质生活家庭（60%）</h4>
+            <ul>
+                <li><strong>基本信息</strong>：25-35岁，家庭年收入20-50万</li>
+                <li><strong>生活特征</strong>：注重生活品质，追求健康饮食和运动</li>
+                <li><strong>痛点</strong>：每天纠结吃什么、运动什么、穿什么，决策疲劳</li>
+                <li><strong>需求</strong>：希望有专业的AI助手帮助规划生活</li>
+            </ul>
+
+            <h4>重要用户：效率追求家庭（30%）</h4>
+            <ul>
+                <li><strong>基本信息</strong>：28-40岁，双职工家庭，工作繁忙</li>
+                <li><strong>生活特征</strong>：追求效率，希望简化生活管理</li>
+                <li><strong>痛点</strong>：时间有限，需要快速做出生活决策</li>
+                <li><strong>需求</strong>：希望通过AI快速获得实用的生活建议</li>
+            </ul>
+
+            <h4>潜在用户：生活规划困扰者（10%）</h4>
+            <ul>
+                <li><strong>基本信息</strong>：22-30岁，单身或新婚，生活经验不足</li>
+                <li><strong>生活特征</strong>：对生活规划缺乏系统认知</li>
+                <li><strong>痛点</strong>：不知道如何合理安排饮食、运动、穿搭</li>
+                <li><strong>需求</strong>：希望学习生活规划技能，提升生活品质</li>
+            </ul>
+        </div>
+
+        <div class="content-section" id="scenarios">
+            <h2>6. 三场景详细设计</h2>
+
+            <h3>6.1 场景一：每天吃什么</h3>
+
+            <h4>6.1.1 AI饮食规划对话</h4>
+            <div class="code-block">
+用户: "最近肠胃不舒服，想吃清淡一点"
+AI: "了解您的情况。请问您希望我为您安排几天的清淡饮食？家里有几口人用餐？有什么特别不能吃的吗？"
+用户: "安排3天吧，家里3口人，不能吃辣"
+AI: "好的，我为您安排3天的养胃清淡饮食计划，考虑到3人份量，避免辛辣食物..."
+            </div>
+
+            <h4>6.1.2 AI智能菜谱生成</h4>
+            <div class="code-block">
+用户: "家里有土豆、胡萝卜、牛肉，想做个简单的菜"
+AI: "根据您的食材，我推荐做土豆炖牛肉，制作简单营养丰富。需要我生成详细菜谱吗？"
+用户: "好的，要详细步骤"
+AI: "为您生成土豆炖牛肉的详细菜谱..."
+            </div>
+
+            <div class="highlight-box">
+                <h4>菜谱输出格式示例：</h4>
+                <strong>【土豆炖牛肉】</strong><br>
+                制作时间: 45分钟 | 难度: ⭐⭐ | 营养: 蛋白质丰富<br><br>
+                <strong>用料:</strong><br>
+                - 牛肉 500g (切块)<br>
+                - 土豆 2个 (去皮切块)<br>
+                - 胡萝卜 1根 (切块)<br><br>
+                <strong>制作步骤:</strong><br>
+                1. 牛肉冷水下锅焯水，撇去浮沫 (5分钟)<br>
+                2. 热锅下油，爆炒牛肉至变色 (3分钟)<br>
+                3. 加入调料炒匀，加热水没过牛肉<br>
+                4. 大火烧开转小火炖30分钟<br>
+                5. 加入土豆胡萝卜，继续炖15分钟
+            </div>
+
+            <h3>6.2 场景二：每天运动什么</h3>
+
+            <h4>6.2.1 AI运动规划对话</h4>
+            <div class="code-block">
+用户: "最近想减肥，但是膝盖有点不舒服"
+AI: "了解您的情况。请问您平时有运动习惯吗？每周大概能安排几次运动？每次多长时间比较合适？"
+用户: "平时很少运动，一周能安排3次，每次30-45分钟"
+AI: "考虑到您的膝盖情况，我推荐一些低冲击的运动方案..."
+            </div>
+
+            <div class="highlight-box">
+                <h4>运动计划输出格式：</h4>
+                <strong>本周运动计划 (膝盖友好减脂方案)</strong><br>
+                🏊 周一: 游泳 30分钟 (中等强度) + 上肢力量训练 15分钟<br>
+                🚴 周三: 椭圆机 25分钟 (低强度) + 核心训练 20分钟<br>
+                🧘 周五: 瑜伽 45分钟 (拉伸放松)<br><br>
+                <strong>⚠️ 注意事项:</strong><br>
+                - 运动前充分热身，避免膝盖受力过大<br>
+                - 如感到膝盖不适请立即停止
+            </div>
+
+            <h3>6.3 场景三：每天穿什么</h3>
+
+            <h4>6.3.1 AI穿搭建议对话</h4>
+            <div class="code-block">
+用户: "明天要开会，下午还要去健身房"
+AI: "了解，明天有商务会议和健身安排。我查了一下天气，明天多云，气温15-22度。建议您..."
+            </div>
+
+            <div class="highlight-box">
+                <h4>穿搭建议输出格式：</h4>
+                <strong>明天穿搭建议 (商务+健身)</strong><br><br>
+                🌤️ 天气: 多云 15-22°C 微风<br><br>
+                <strong>👔 上午商务会议:</strong><br>
+                - 上装: 白色衬衫 + 深蓝色西装外套<br>
+                - 下装: 深蓝色西装裤<br>
+                - 鞋子: 黑色皮鞋<br><br>
+                <strong>🏃 下午健身房:</strong><br>
+                - 运动上衣: 速干T恤<br>
+                - 运动裤: 弹力运动裤<br>
+                - 运动鞋: 跑步鞋<br><br>
+                <strong>💡 贴心提示:</strong><br>
+                - 建议带个运动包装健身装备<br>
+                - 会议结束后可以快速换装
+            </div>
+        </div>
+
+        <div class="content-section" id="business-model">
+            <h2>9. 商业模式</h2>
+
+            <h3>9.1 盈利模式</h3>
+
+            <h4>订阅会员制（主要收入来源）</h4>
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>版本</th>
+                        <th>价格</th>
+                        <th>功能</th>
+                    </tr>
+                    <tr>
+                        <td>基础版</td>
+                        <td>免费</td>
+                        <td>每日3次AI对话</td>
+                    </tr>
+                    <tr>
+                        <td>高级版</td>
+                        <td>29元/月</td>
+                        <td>无限AI对话 + 高级功能</td>
+                    </tr>
+                    <tr>
+                        <td>家庭版</td>
+                        <td>49元/月</td>
+                        <td>支持6人家庭 + 专属功能</td>
+                    </tr>
+                </table>
+            </div>
+
+            <h4>增值服务</h4>
+            <ul>
+                <li><strong>个性化定制</strong>：专属AI训练，199元/次</li>
+                <li><strong>营养师咨询</strong>：真人营养师服务，99元/次</li>
+                <li><strong>私人教练</strong>：运动指导服务，299元/月</li>
+            </ul>
+
+            <h4>生态分成</h4>
+            <ul>
+                <li><strong>购物平台分成</strong>：订单金额1-3%</li>
+                <li><strong>健康设备推荐</strong>：设备销售分成5-10%</li>
+                <li><strong>第三方服务</strong>：服务费用分成10-20%</li>
+            </ul>
+
+            <h3>9.2 收入预测</h3>
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>年份</th>
+                        <th>用户规模</th>
+                        <th>付费转化率</th>
+                        <th>平均ARPU</th>
+                        <th>预计收入</th>
+                    </tr>
+                    <tr>
+                        <td>第一年</td>
+                        <td>1万家庭</td>
+                        <td>15%</td>
+                        <td>300元/年</td>
+                        <td>45万元</td>
+                    </tr>
+                    <tr>
+                        <td>第二年</td>
+                        <td>5万家庭</td>
+                        <td>25%</td>
+                        <td>400元/年</td>
+                        <td>500万元</td>
+                    </tr>
+                    <tr>
+                        <td>第三年</td>
+                        <td>20万家庭</td>
+                        <td>30%</td>
+                        <td>500元/年</td>
+                        <td>3000万元</td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+
+        <div class="content-section" id="success-metrics">
+            <h2>12. 成功指标</h2>
+
+            <h3>12.1 用户指标</h3>
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h4>📊 用户规模指标</h4>
+                    <ul>
+                        <li>注册用户数：目标第一年1万家庭</li>
+                        <li>活跃用户数：DAU>30%，MAU>60%</li>
+                        <li>用户留存率：7日留存>60%，30日留存>30%</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h4>😊 用户体验指标</h4>
+                    <ul>
+                        <li>AI对话满意度：>4.0/5.0</li>
+                        <li>功能使用频次：平均每日使用>2次</li>
+                        <li>用户推荐意愿：NPS>50</li>
+                    </ul>
+                </div>
+                <div class="feature-card">
+                    <h4>💰 用户价值指标</h4>
+                    <ul>
+                        <li>付费转化率：>15%（第一年）</li>
+                        <li>用户生命周期价值：>500元</li>
+                        <li>用户流失率：<5%/月</li>
+                    </ul>
+                </div>
+            </div>
+
+            <h3>12.2 AI服务质量</h3>
+            <ul>
+                <li><strong>对话响应时间</strong>：<3秒</li>
+                <li><strong>意图识别准确率</strong>：>90%</li>
+                <li><strong>推荐内容满意度</strong>：>4.0/5.0</li>
+                <li><strong>AI服务可用性</strong>：>99.5%</li>
+            </ul>
+
+            <h3>12.3 商业指标</h3>
+            <ul>
+                <li><strong>月度经常性收入（MRR）</strong>：目标第一年达到10万元</li>
+                <li><strong>年度合同价值（ACV）</strong>：平均每家庭300元</li>
+                <li><strong>用户获取成本（CAC）</strong>：<100元/家庭</li>
+                <li><strong>单位经济效益</strong>：LTV/CAC>3</li>
+            </ul>
+        </div>
+    </div>
+
+    <a href="#" class="back-to-top">↑</a>
+</body>
+</html>
