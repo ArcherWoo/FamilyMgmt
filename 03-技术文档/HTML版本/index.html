@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>家庭生活AI助手 - 技术文档中心 v5.0</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+
+        .header .version {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        .main-content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .nav-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .nav-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 15px;
+            padding: 25px;
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .nav-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            border-color: #667eea;
+        }
+
+        .nav-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
+        .nav-card p {
+            color: #666;
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .nav-card .features {
+            list-style: none;
+        }
+
+        .nav-card .features li {
+            color: #888;
+            font-size: 0.85rem;
+            margin-bottom: 5px;
+            padding-left: 15px;
+            position: relative;
+        }
+
+        .nav-card .features li:before {
+            content: "▶";
+            color: #667eea;
+            position: absolute;
+            left: 0;
+        }
+
+        .role-nav {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 2px solid #eee;
+        }
+
+        .role-nav h2 {
+            color: #333;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .role-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .role-card {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .role-card h4 {
+            color: #d63384;
+            margin-bottom: 10px;
+        }
+
+        .role-card .docs {
+            font-size: 0.85rem;
+            color: #666;
+        }
+
+        .tech-stack {
+            margin-top: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-radius: 15px;
+        }
+
+        .tech-stack h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .tech-item {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .tech-item h4 {
+            color: #667eea;
+            margin-bottom: 5px;
+        }
+
+        .tech-item p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: white;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .nav-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🚀 技术文档中心 v5.0</h1>
+            <p>家庭生活AI助手 - 2025年最先进AI架构与开发指南</p>
+            <div class="version">Google A2A Protocol + LangGraph + Claude 3.5/4 | 2025-06-28</div>
+        </div>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number">8</div>
+                <div class="stat-label">核心模块</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">A2A</div>
+                <div class="stat-label">通信协议</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">4</div>
+                <div class="stat-label">AI模型</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">K8s</div>
+                <div class="stat-label">云原生</div>
+            </div>
+        </div>
+
+        <div class="main-content">
+            <div class="nav-grid">
+                <a href="architecture-v5.html" class="nav-card">
+                    <h3>🚀 技术架构设计 v5.0</h3>
+                    <p>2025年最先进系统架构，Google A2A + LangGraph + Claude 3.5/4</p>
+                    <ul class="features">
+                        <li>A2A Protocol v1.2</li>
+                        <li>LangGraph 0.2 编排</li>
+                        <li>云原生K8s部署</li>
+                        <li>企业级安全</li>
+                        <li>AI专用监控</li>
+                    </ul>
+                </a>
+
+                <a href="a2a-langgraph-v5.html" class="nav-card">
+                    <h3>🤖 A2A+LangGraph方案 v5.0</h3>
+                    <p>标准化Agent通信与工作流编排，2025年最新技术</p>
+                    <ul class="features">
+                        <li>分布式Agent系统</li>
+                        <li>状态机驱动编排</li>
+                        <li>多模型组合</li>
+                        <li>跨平台互操作</li>
+                        <li>CNCF孵化项目</li>
+                    </ul>
+                </a>
+
+                <a href="modules.html" class="nav-card">
+                    <h3>🧩 模块拆解方案</h3>
+                    <p>8个核心模块详细拆解，独立交付，松耦合设计</p>
+                    <ul class="features">
+                        <li>AI对话引擎</li>
+                        <li>MCP服务网关</li>
+                        <li>三场景服务模块</li>
+                        <li>家庭协作服务</li>
+                        <li>前端应用</li>
+                    </ul>
+                </a>
+
+                <a href="tasks.html" class="nav-card">
+                    <h3>📋 开发任务分解</h3>
+                    <p>详细开发任务分解，每个任务1-3天完成，可测试可追踪</p>
+                    <ul class="features">
+                        <li>任务依赖关系</li>
+                        <li>开发时间规划</li>
+                        <li>团队配置建议</li>
+                        <li>里程碑管理</li>
+                    </ul>
+                </a>
+
+                <a href="checklist.html" class="nav-card">
+                    <h3>✅ 交付检查清单</h3>
+                    <p>质量交付标准，确保每个模块达到生产就绪状态</p>
+                    <ul class="features">
+                        <li>功能完整性检查</li>
+                        <li>性能指标验证</li>
+                        <li>质量保证标准</li>
+                        <li>文档完整性</li>
+                    </ul>
+                </a>
+
+                <a href="database.html" class="nav-card">
+                    <h3>💾 数据库设计 v3.0</h3>
+                    <p>完整数据库设计，PostgreSQL 16 + Redis 7 + Chroma 0.5</p>
+                    <ul class="features">
+                        <li>关系型数据设计</li>
+                        <li>向量数据库集成</li>
+                        <li>缓存策略优化</li>
+                        <li>多存储架构</li>
+                    </ul>
+                </a>
+
+                <a href="api.html" class="nav-card">
+                    <h3>🔌 API接口文档 v3.0</h3>
+                    <p>核心API接口设计，RESTful + WebSocket + A2A协议支持</p>
+                    <ul class="features">
+                        <li>OAuth 2.1认证</li>
+                        <li>AI Agent接口</li>
+                        <li>三场景API v2</li>
+                        <li>A2A协议集成</li>
+                    </ul>
+                </a>
+
+
+            </div>
+
+            <div class="role-nav">
+                <h2>👥 按角色快速导航</h2>
+                <div class="role-grid">
+                    <div class="role-card">
+                        <h4>🏗️ 架构师</h4>
+                        <div class="docs">技术架构v5.0 → A2A+LangGraph → 模块拆解</div>
+                    </div>
+                    <div class="role-card">
+                        <h4>🤖 AI工程师</h4>
+                        <div class="docs">A2A+LangGraph → 模块拆解 → 开发任务</div>
+                    </div>
+                    <div class="role-card">
+                        <h4>💻 后端工程师</h4>
+                        <div class="docs">开发任务 → 数据库设计 → API接口</div>
+                    </div>
+                    <div class="role-card">
+                        <h4>📱 前端工程师</h4>
+                        <div class="docs">API接口 → 开发任务 → 交付清单</div>
+                    </div>
+                    <div class="role-card">
+                        <h4>🧪 测试工程师</h4>
+                        <div class="docs">交付清单 → API接口 → 开发任务</div>
+                    </div>
+                    <div class="role-card">
+                        <h4>🚀 DevOps工程师</h4>
+                        <div class="docs">技术架构v5.0 → 交付清单 → 数据库设计</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tech-stack">
+                <h2>🛠️ 技术栈概览 v5.0</h2>
+                <div class="tech-grid">
+                    <div class="tech-item">
+                        <h4>前端</h4>
+                        <p>Taro 4.0 + React 18</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>后端</h4>
+                        <p>Python 3.12 + FastAPI 0.110</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>AI引擎</h4>
+                        <p>A2A v1.2 + LangGraph 0.2</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>AI模型</h4>
+                        <p>Claude 3.5/4 + GPT-4o</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>数据库</h4>
+                        <p>PostgreSQL 16 + Redis 7 + Chroma</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>容器化</h4>
+                        <p>Docker 25 + Kubernetes 1.30</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>监控</h4>
+                        <p>LangSmith + Prometheus + Grafana</p>
+                    </div>
+                    <div class="tech-item">
+                        <h4>安全</h4>
+                        <p>OAuth 2.1 + mTLS + RBAC</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>📅 最后更新: 2025-06-28 | 📖 版本: v5.0 | ✅ 状态: 最新版本</p>
+            <p>🚀 采用Google A2A Protocol v1.2 + LangGraph 0.2 + Claude 3.5/4 | 2025年最先进AI架构</p>
+            <p>💡 建议开发团队按照角色和阶段选择相应文档进行阅读</p>
+        </div>
+    </div>
+</body>
+</html>

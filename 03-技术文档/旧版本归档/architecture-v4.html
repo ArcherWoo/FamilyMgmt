@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>技术架构设计 v4.0 - 家庭生活AI助手 (已归档)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header .meta {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .header .meta span {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .nav-breadcrumb {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .nav-breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        .nav-breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .main-content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 4px solid #ff6b6b;
+        }
+
+        .highlight-box h4 {
+            color: #d63384;
+            margin-bottom: 10px;
+        }
+
+        .highlight-box a {
+            color: #d63384;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .highlight-box a:hover {
+            text-decoration: underline;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            padding: 20px;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .header .meta {
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏗️ 技术架构设计 v4.0</h1>
+            <p>已归档版本 - 先进AI Agent架构</p>
+            <div class="meta">
+                <span>📅 版本: v4.0 (已归档)</span>
+                <span>🗓️ 更新: 2025-06-27</span>
+                <span>🎯 状态: 已被v5.0替代</span>
+            </div>
+        </div>
+
+        <div class="nav-breadcrumb">
+            <a href="../HTML版本/index.html">🏠 技术文档首页</a> > 
+            <span>🏗️ 技术架构设计 (已归档)</span>
+        </div>
+
+        <div class="main-content">
+            <div class="highlight-box">
+                <h4>⚠️ 归档说明</h4>
+                <p><strong>此文档为v4.0版本，已被v5.0版本替代。</strong></p>
+                <p>新版本采用Google A2A Protocol v1.2 + LangGraph 0.2 + Claude 3.5/4，技术更先进，支持云原生部署。</p>
+                <p><a href="../HTML版本/architecture-v5.html">👉 查看最新版本 v5.0</a></p>
+            </div>
+            
+            <div class="highlight-box">
+                <h4>📋 v4.0版本主要特性</h4>
+                <p><strong>AI模型：</strong>Claude 3.5 Sonnet + GPT-4o + Gemini 1.5 Pro</p>
+                <p><strong>架构：</strong>微服务架构 + MCP生态集成</p>
+                <p><strong>部署：</strong>Docker Compose → Kubernetes</p>
+                <p><strong>数据库：</strong>PostgreSQL + Redis + InfluxDB</p>
+            </div>
+            
+            <div class="highlight-box">
+                <h4>🚀 v5.0版本升级亮点</h4>
+                <p><strong>通信协议：</strong>Google A2A Protocol v1.2 (CNCF孵化项目)</p>
+                <p><strong>工作流编排：</strong>LangGraph 0.2 状态机驱动</p>
+                <p><strong>AI模型：</strong>新增Claude 4 Opus (2025年最新)</p>
+                <p><strong>部署方案：</strong>云原生Kubernetes 1.30</p>
+                <p><strong>监控：</strong>LangSmith + A2A监控 + Prometheus</p>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>📖 本技术架构设计已归档，请查看最新版本</p>
+            <p>🔄 归档时间: 2025-06-28 | 📋 版本: v4.0 (已归档)</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API接口文档 - 家庭生活AI助手</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .header .meta {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+
+        .header .meta span {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        .nav-breadcrumb {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px 25px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .nav-breadcrumb a {
+            color: #667eea;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        .main-content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section h2 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .api-endpoint {
+            margin-bottom: 40px;
+            border: 1px solid #e9ecef;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .endpoint-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .http-method {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+
+        .http-method.post {
+            background: #28a745;
+        }
+
+        .http-method.get {
+            background: #17a2b8;
+        }
+
+        .endpoint-url {
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            flex: 1;
+        }
+
+        .endpoint-content {
+            padding: 25px;
+        }
+
+        .endpoint-description {
+            color: #666;
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        .code-block {
+            background: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 15px 0;
+            overflow-x: auto;
+        }
+
+        .code-block pre {
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+            line-height: 1.4;
+            margin: 0;
+            white-space: pre-wrap;
+        }
+
+        .code-block.request {
+            border-left: 4px solid #28a745;
+        }
+
+        .code-block.response {
+            border-left: 4px solid #17a2b8;
+        }
+
+        .code-label {
+            font-weight: bold;
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 0.9rem;
+        }
+
+        .auth-section {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 25px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        .auth-section h3 {
+            color: #d63384;
+            margin-bottom: 15px;
+        }
+
+        .auth-example {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 15px;
+            border-radius: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+        }
+
+        .status-codes {
+            margin-top: 30px;
+            padding: 25px;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%);
+            border-radius: 12px;
+        }
+
+        .status-codes h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            color: #333;
+            border: none;
+            padding: 0;
+        }
+
+        .status-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .status-table th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+
+        .status-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .status-table tr:nth-child(even) {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .status-code {
+            font-weight: bold;
+            font-family: 'Courier New', monospace;
+        }
+
+        .status-code.success { color: #28a745; }
+        .status-code.client-error { color: #ffc107; }
+        .status-code.server-error { color: #dc3545; }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #667eea;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            background: #5a6fd8;
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .main-content {
+                padding: 20px;
+            }
+            
+            .endpoint-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .endpoint-url {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔌 API接口文档</h1>
+            <p>核心API接口设计 - RESTful规范，完整的接口文档</p>
+            <div class="meta">
+                <span>📅 版本: v1</span>
+                <span>🌐 基础URL: https://api.familyai.com/v1</span>
+                <span>🔐 认证: JWT Bearer Token</span>
+            </div>
+        </div>
+
+        <div class="nav-breadcrumb">
+            <a href="index.html">🏠 技术文档首页</a> > 
+            <span>🔌 API接口文档</span>
+        </div>
+
+        <div class="main-content">
+            <div class="auth-section">
+                <h3>🔐 认证授权</h3>
+                <p>所有API请求需要在Header中携带JWT Token：</p>
+                <div class="auth-example">
+Authorization: Bearer {jwt_token}
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🔑 用户认证</h2>
+                
+                <div class="api-endpoint">
+                    <div class="endpoint-header">
+                        <span class="http-method post">POST</span>
+                        <span class="endpoint-url">/auth/login</span>
+                    </div>
+                    <div class="endpoint-content">
+                        <div class="endpoint-description">
+                            用户登录接口，支持微信登录，返回JWT Token
+                        </div>
+                        
+                        <div class="code-label">请求示例:</div>
+                        <div class="code-block request">
+                            <pre>{
+  "login_type": "wechat",
+  "code": "wx_auth_code",
+  "user_info": {
+    "nickname": "用户昵称",
+    "avatar_url": "头像URL"
+  }
+}</pre>
+                        </div>
+
+                        <div class="code-label">响应示例:</div>
+                        <div class="code-block response">
+                            <pre>{
+  "code": 200,
+  "message": "登录成功",
+  "data": {
+    "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
+    "refresh_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...",
+    "expires_in": 7200,
+    "user": {
+      "id": "uuid",
+      "username": "用户名",
+      "nickname": "昵称",
+      "avatar_url": "头像URL"
+    }
+  }
+}</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🤖 AI对话接口</h2>
+                
+                <div class="api-endpoint">
+                    <div class="endpoint-header">
+                        <span class="http-method post">POST</span>
+                        <span class="endpoint-url">/chat/send</span>
+                    </div>
+                    <div class="endpoint-content">
+                        <div class="endpoint-description">
+                            发送消息给AI助手，获取智能回复
+                        </div>
+                        
+                        <div class="code-label">请求示例:</div>
+                        <div class="code-block request">
+                            <pre>{
+  "session_id": "uuid",
+  "message": "今天想吃清淡一点的，有什么推荐吗？",
+  "context_type": "food",
+  "family_id": "uuid"
+}</pre>
+                        </div>
+
+                        <div class="code-label">响应示例:</div>
+                        <div class="code-block response">
+                            <pre>{
+  "code": 200,
+  "message": "消息发送成功",
+  "data": {
+    "message_id": "uuid",
+    "session_id": "uuid",
+    "response": {
+      "content": "根据您的需求，我为您推荐几道清淡的菜品...",
+      "type": "text",
+      "suggestions": [
+        {
+          "type": "recipe",
+          "title": "蒸蛋羹",
+          "description": "嫩滑清香，营养丰富"
+        }
+      ]
+    },
+    "ai_model": "zhipu-glm4",
+    "tokens_used": 150,
+    "response_time": 2500
+  }
+}</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="api-endpoint">
+                    <div class="endpoint-header">
+                        <span class="http-method get">GET</span>
+                        <span class="endpoint-url">/chat/sessions/{session_id}/messages</span>
+                    </div>
+                    <div class="endpoint-content">
+                        <div class="endpoint-description">
+                            获取会话历史消息，支持分页
+                        </div>
+                        
+                        <div class="code-label">请求参数:</div>
+                        <div class="code-block request">
+                            <pre>?page=1&limit=20</pre>
+                        </div>
+
+                        <div class="code-label">响应示例:</div>
+                        <div class="code-block response">
+                            <pre>{
+  "code": 200,
+  "message": "获取成功",
+  "data": {
+    "messages": [
+      {
+        "id": "uuid",
+        "message_type": "user",
+        "content": "今天想吃清淡一点的",
+        "created_at": "2025-06-27T10:00:00Z"
+      },
+      {
+        "id": "uuid",
+        "message_type": "assistant",
+        "content": "我为您推荐几道清淡菜品...",
+        "metadata": {
+          "suggestions": []
+        },
+        "created_at": "2025-06-27T10:00:03Z"
+      }
+    ],
+    "pagination": {
+      "page": 1,
+      "limit": 20,
+      "total": 45,
+      "has_more": true
+    }
+  }
+}</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🍽️ 饮食规划接口</h2>
+                
+                <div class="api-endpoint">
+                    <div class="endpoint-header">
+                        <span class="http-method post">POST</span>
+                        <span class="endpoint-url">/meal-plans</span>
+                    </div>
+                    <div class="endpoint-content">
+                        <div class="endpoint-description">
+                            创建饮食计划，AI自动生成营养搭配
+                        </div>
+                        
+                        <div class="code-label">请求示例:</div>
+                        <div class="code-block request">
+                            <pre>{
+  "title": "本周健康饮食计划",
+  "description": "低脂高蛋白饮食",
+  "plan_type": "weekly",
+  "start_date": "2025-06-27",
+  "end_date": "2025-07-03",
+  "target_calories": 1800,
+  "dietary_goals": ["减脂", "增肌"],
+  "restrictions": ["无辣", "少油"],
+  "family_id": "uuid"
+}</pre>
+                        </div>
+
+                        <div class="code-label">响应示例:</div>
+                        <div class="code-block response">
+                            <pre>{
+  "code": 200,
+  "message": "创建成功",
+  "data": {
+    "id": "uuid",
+    "title": "本周健康饮食计划",
+    "status": "active",
+    "meals": [
+      {
+        "date": "2025-06-27",
+        "breakfast": {
+          "recipe_id": "uuid",
+          "name": "燕麦粥配水果",
+          "calories": 300
+        },
+        "lunch": {
+          "recipe_id": "uuid",
+          "name": "鸡胸肉沙拉",
+          "calories": 450
+        },
+        "dinner": {
+          "recipe_id": "uuid",
+          "name": "蒸蛋羹配青菜",
+          "calories": 350
+        }
+      }
+    ],
+    "created_at": "2025-06-27T10:00:00Z"
+  }
+}</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="api-endpoint">
+                    <div class="endpoint-header">
+                        <span class="http-method post">POST</span>
+                        <span class="endpoint-url">/meal-plans/{plan_id}/shopping-list</span>
+                    </div>
+                    <div class="endpoint-content">
+                        <div class="endpoint-description">
+                            根据饮食计划生成购物清单，集成购物平台
+                        </div>
+
+                        <div class="code-label">响应示例:</div>
+                        <div class="code-block response">
+                            <pre>{
+  "code": 200,
+  "message": "生成成功",
+  "data": {
+    "id": "uuid",
+    "title": "本周采购清单",
+    "items": [
+      {
+        "name": "鸡胸肉",
+        "quantity": "500g",
+        "category": "肉类",
+        "estimated_price": 25.00,
+        "shops": [
+          {
+            "platform": "淘宝",
+            "price": 24.80,
+            "url": "https://..."
+          }
+        ]
+      }
+    ],
+    "total_amount": 156.80,
+    "created_at": "2025-06-27T10:00:00Z"
+  }
+}</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>🏃 运动推荐接口</h2>
+                
+                <div class="api-endpoint">
+                    <div class="endpoint-header">
+                        <span class="http-method post">POST</span>
+                        <span class="endpoint-url">/exercise-plans</span>
+                    </div>
+                    <div class="endpoint-content">
+                        <div class="endpoint-description">
+                            创建个性化运动计划，基于用户健康数据
+                        </div>
+                        
+                        <div class="code-label">请求示例:</div>
+                        <div class="code-block request">
+                            <pre>{
+  "title": "减脂塑形计划",
+  "fitness_goal": "减脂",
+  "difficulty_level": 3,
+  "duration_weeks": 4,
+  "available_time": {
+    "days_per_week": 3,
+    "minutes_per_session": 45
+  },
+  "equipment": ["哑铃", "瑜伽垫"],
+  "limitations": ["膝盖不适"]
+}</pre>
+                        </div>
+
+                        <div class="code-label">响应示例:</div>
+                        <div class="code-block response">
+                            <pre>{
+  "code": 200,
+  "message": "创建成功",
+  "data": {
+    "id": "uuid",
+    "title": "减脂塑形计划",
+    "exercises": [
+      {
+        "week": 1,
+        "day": 1,
+        "workout": {
+          "warm_up": [
+            {
+              "name": "动态拉伸",
+              "duration": 5,
+              "description": "全身动态拉伸动作"
+            }
+          ],
+          "main_workout": [
+            {
+              "name": "深蹲",
+              "sets": 3,
+              "reps": 15,
+              "rest": 60,
+              "description": "注意膝盖不要超过脚尖"
+            }
+          ]
+        }
+      }
+    ],
+    "created_at": "2025-06-27T10:00:00Z"
+  }
+}</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>👔 穿搭建议接口</h2>
+                
+                <div class="api-endpoint">
+                    <div class="endpoint-header">
+                        <span class="http-method post">POST</span>
+                        <span class="endpoint-url">/outfit/suggestions</span>
+                    </div>
+                    <div class="endpoint-content">
+                        <div class="endpoint-description">
+                            获取智能穿搭建议，基于天气和场合
+                        </div>
+                        
+                        <div class="code-label">请求示例:</div>
+                        <div class="code-block request">
+                            <pre>{
+  "date": "2025-06-27",
+  "occasions": ["工作", "健身"],
+  "weather_location": "北京市",
+  "style_preferences": ["简约", "舒适"],
+  "color_preferences": ["黑色", "白色", "灰色"]
+}</pre>
+                        </div>
+
+                        <div class="code-label">响应示例:</div>
+                        <div class="code-block response">
+                            <pre>{
+  "code": 200,
+  "message": "获取成功",
+  "data": {
+    "date": "2025-06-27",
+    "weather": {
+      "temperature": "15-22°C",
+      "condition": "多云",
+      "humidity": "60%"
+    },
+    "suggestions": [
+      {
+        "occasion": "工作",
+        "outfit": {
+          "top": {
+            "type": "衬衫",
+            "color": "白色",
+            "description": "白色长袖衬衫"
+          },
+          "bottom": {
+            "type": "西装裤",
+            "color": "深蓝色",
+            "description": "深蓝色西装裤"
+          }
+        },
+        "tips": "今天温度适中，建议内搭可以选择薄款"
+      }
+    ]
+  }
+}</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2>👨‍👩‍👧‍👦 家庭协作接口</h2>
+                
+                <div class="api-endpoint">
+                    <div class="endpoint-header">
+                        <span class="http-method post">POST</span>
+                        <span class="endpoint-url">/families</span>
+                    </div>
+                    <div class="endpoint-content">
+                        <div class="endpoint-description">
+                            创建家庭，支持多成员协作
+                        </div>
+                        
+                        <div class="code-label">请求示例:</div>
+                        <div class="code-block request">
+                            <pre>{
+  "name": "张家大院",
+  "description": "我们的温馨小家",
+  "settings": {
+    "sharing_level": "full",
+    "notification_enabled": true
+  }
+}</pre>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="api-endpoint">
+                    <div class="endpoint-header">
+                        <span class="http-method post">POST</span>
+                        <span class="endpoint-url">/families/{family_id}/invite</span>
+                    </div>
+                    <div class="endpoint-content">
+                        <div class="endpoint-description">
+                            邀请家庭成员，生成邀请码
+                        </div>
+
+                        <div class="code-label">响应示例:</div>
+                        <div class="code-block response">
+                            <pre>{
+  "code": 200,
+  "message": "邀请创建成功",
+  "data": {
+    "invite_code": "FAM123456",
+    "expires_at": "2025-07-04T10:00:00Z",
+    "invite_url": "https://app.familyai.com/join/FAM123456"
+  }
+}</pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="status-codes">
+                <h2>📝 状态码说明</h2>
+                <table class="status-table">
+                    <thead>
+                        <tr>
+                            <th>状态码</th>
+                            <th>说明</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="status-code success">200</span></td>
+                            <td>请求成功</td>
+                        </tr>
+                        <tr>
+                            <td><span class="status-code success">201</span></td>
+                            <td>创建成功</td>
+                        </tr>
+                        <tr>
+                            <td><span class="status-code client-error">400</span></td>
+                            <td>请求参数错误</td>
+                        </tr>
+                        <tr>
+                            <td><span class="status-code client-error">401</span></td>
+                            <td>未授权</td>
+                        </tr>
+                        <tr>
+                            <td><span class="status-code client-error">403</span></td>
+                            <td>权限不足</td>
+                        </tr>
+                        <tr>
+                            <td><span class="status-code client-error">404</span></td>
+                            <td>资源不存在</td>
+                        </tr>
+                        <tr>
+                            <td><span class="status-code client-error">429</span></td>
+                            <td>请求频率限制</td>
+                        </tr>
+                        <tr>
+                            <td><span class="status-code server-error">500</span></td>
+                            <td>服务器内部错误</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div style="text-align: center; color: white; padding: 20px; opacity: 0.8;">
+            <p>📖 本API文档将根据功能迭代持续更新</p>
+            <p>🔄 最后更新: 2025-06-27 | 📋 版本: v2.0</p>
+        </div>
+    </div>
+
+    <a href="#" class="back-to-top" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;">↑</a>
+</body>
+</html>
