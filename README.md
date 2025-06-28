@@ -24,21 +24,33 @@
 
 ## 🏗️ 技术架构 (2025年最新)
 
-### 核心技术栈
-- **通信协议**: Google A2A Protocol v1.2 (CNCF孵化项目)
+### 核心技术栈 - A2A + MCP双引擎
+- **A2A协议**: Google A2A Protocol v1.2 (Agent间协作)
+- **MCP协议**: Model Context Protocol v1.0 (外部服务集成)
 - **工作流编排**: LangGraph 0.2 状态机驱动
 - **AI模型**: 多模型智能路由 (GLM-4 + Claude 3.5/4 + GPT-4o + Gemini)
-- **后端**: Python 3.12 + FastAPI 0.110 + A2A Registry
+- **后端**: Python 3.12 + FastAPI 0.110 + A2A Registry + MCP Server
 - **前端**: Taro 4.0 + React 18 + TypeScript 5.0
 - **数据库**: PostgreSQL 16 + Redis 7 + Chroma 0.5
 - **容器化**: Docker 25 + Kubernetes 1.30
 
-### AI Agent服务
-- 🍽️ **智能饮食规划Agent** - 多模态营养分析和菜谱生成
-- 🏃 **AI运动教练Agent** - 个性化运动计划和健康监测
-- 👗 **智能穿搭顾问Agent** - 图像识别和AR试衣
-- 🛒 **智能购物决策Agent** - AI比价和质量分析
-- 👨‍👩‍👧‍👦 **家庭协作Agent** - 实时同步和智能协调
+### A2A Agent + MCP服务生态
+#### 🤖 A2A Agent服务 (智能协作层)
+- 🍽️ **智能饮食规划Agent** - 协调MCP营养数据，生成个性化膳食计划
+- 🏃 **AI运动教练Agent** - 整合MCP健康数据，制定智能运动方案
+- 👗 **智能穿搭顾问Agent** - 结合MCP天气数据，提供智能穿搭建议
+- 🛒 **智能购物决策Agent** - 调用MCP购物平台，实现AI比价和推荐
+- 👨‍👩‍👧‍👦 **家庭协作Agent** - 统筹所有Agent，实现家庭智能协作
+
+#### 🌐 MCP服务集群 (数据服务层)
+- 📊 **营养数据库MCP** - USDA食物数据库，全球营养成分数据
+- 🌤️ **天气服务MCP** - 和风天气API，实时天气和生活指数
+- 💪 **健康数据MCP** - 微信运动、Apple Health多平台整合
+- 🛍️ **购物平台MCP** - 淘宝、京东、美团等电商平台集成
+- 🍳 **菜谱数据MCP** - 下厨房、豆果美食等菜谱资源
+- 🏃‍♂️ **运动数据MCP** - Strava、Keep等专业运动平台
+- 👗 **时尚数据MCP** - 小红书、时尚趋势分析平台
+- 📍 **地理位置MCP** - 高德地图、百度地图位置服务
 
 ## 📁 项目结构
 ```

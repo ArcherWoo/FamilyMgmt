@@ -1,17 +1,33 @@
-# Google A2A + LangGraph 先进AI架构方案 v5.0
+# A2A + MCP双引擎架构方案 v6.0
 
 ## 📋 文档信息
-- **版本**: v5.0 (2025年最先进方案)
+- **版本**: v6.0 (A2A + MCP双引擎方案)
 - **更新日期**: 2025-06-28
-- **核心技术**: Google A2A Protocol v1.2 + LangGraph 0.2 + Claude 3.5/4 Sonnet
-- **技术前瞻性**: 采用2025年最新发布的技术标准和最佳实践
+- **核心技术**: A2A + MCP双引擎 + LangGraph 0.2 + Claude 3.5/4 + GPT-4o
+- **技术前瞻性**: 业界首个双引擎架构，协议互补，优势融合
+- **核心理念**: A2A负责Agent间协作，MCP负责外部服务集成
 
 ## 🎯 方案概述
 
-### 核心技术栈
+### 双引擎技术栈
 ```yaml
+# A2A协议引擎 (Agent间协作层)
 Agent通信协议: Google Agent2Agent (A2A) Protocol v1.2
 工作流编排: LangGraph StateGraph 0.2
+身份管理: A2A Registry + mTLS + OAuth 2.1
+
+# MCP服务引擎 (外部服务集成层)
+数据连接协议: Model Context Protocol (MCP) v1.0
+服务注册: MCP Server Registry
+数据获取: 标准化MCP Tools和Resources
+
+# 融合层 (统一服务编排)
+智能路由: 基于请求类型的智能路由
+数据融合: A2A协作数据 + MCP外部数据
+缓存优化: 分布式缓存 + 智能预取
+监控告警: Prometheus + Grafana + AlertManager
+
+# AI模型层
 主力AI模型: Claude 3.5/4 Sonnet + GPT-4o + Gemini 1.5 Pro
 状态管理: Redis 7 + PostgreSQL 16 + Chroma 0.5
 部署方案: Docker 25 + Kubernetes 1.30

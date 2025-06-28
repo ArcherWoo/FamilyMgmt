@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>家庭生活AI助手 - 产品规划</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f5f7fa;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .navbar .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .navbar h1 {
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .navbar .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .navbar .nav-links a {
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            transition: background 0.3s ease;
+        }
+        
+        .navbar .nav-links a:hover {
+            background: rgba(255,255,255,0.2);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px 20px;
+        }
+        
+        .doc-header {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .doc-header h1 {
+            color: #667eea;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .doc-header .subtitle {
+            color: #666;
+            font-size: 1.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .evolution-path {
+            background: linear-gradient(135deg, #667eea10 0%, #764ba210 100%);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .evolution-steps {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 20px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .evolution-step {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            flex: 1;
+            min-width: 200px;
+            position: relative;
+        }
+        
+        .evolution-step:not(:last-child):after {
+            content: "→";
+            position: absolute;
+            right: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+            color: #667eea;
+            font-weight: bold;
+        }
+        
+        .evolution-step h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .evolution-step p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .content-section {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .content-section h2 {
+            color: #667eea;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+        
+        .content-section h3 {
+            color: #555;
+            margin: 25px 0 15px 0;
+        }
+        
+        .content-section h4 {
+            color: #667eea;
+            margin: 20px 0 10px 0;
+        }
+        
+        .phase-card {
+            background: #f8f9ff;
+            border-radius: 15px;
+            padding: 25px;
+            margin: 20px 0;
+            border-top: 4px solid #667eea;
+        }
+        
+        .phase-card h4 {
+            color: #667eea;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+        
+        .phase-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+        }
+        
+        .meta-item {
+            text-align: center;
+        }
+        
+        .meta-item .label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        .meta-item .value {
+            font-weight: bold;
+            color: #667eea;
+        }
+        
+        .feature-list {
+            background: #f0fff4;
+            border-left: 4px solid #38a169;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 5px;
+        }
+        
+        .feature-list h5 {
+            color: #38a169;
+            margin-bottom: 10px;
+        }
+        
+        .feature-list ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .feature-list li {
+            padding: 5px 0;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .feature-list li:before {
+            content: "✅";
+            position: absolute;
+            left: 0;
+        }
+        
+        .milestone-timeline {
+            position: relative;
+            margin: 30px 0;
+        }
+        
+        .milestone-timeline:before {
+            content: '';
+            position: absolute;
+            left: 30px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #667eea;
+        }
+        
+        .milestone-item {
+            position: relative;
+            margin: 20px 0;
+            padding-left: 80px;
+        }
+        
+        .milestone-item:before {
+            content: '';
+            position: absolute;
+            left: 20px;
+            top: 10px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #667eea;
+            border: 4px solid white;
+            box-shadow: 0 0 0 2px #667eea;
+        }
+        
+        .milestone-date {
+            background: #667eea;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 15px;
+            font-size: 0.9rem;
+            display: inline-block;
+            margin-bottom: 10px;
+        }
+        
+        .milestone-content {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        
+        .milestone-content h4 {
+            color: #667eea;
+            margin-bottom: 10px;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        th {
+            background: #667eea;
+            color: white;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+        
+        tr:hover {
+            background: #f8f9ff;
+        }
+        
+        .status-planning {
+            background: #ffd700;
+            color: #333;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #667eea;
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+            transition: transform 0.3s ease;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-3px);
+        }
+        
+        @media (max-width: 768px) {
+            .navbar .nav-links {
+                display: none;
+            }
+            
+            .doc-header h1 {
+                font-size: 2rem;
+            }
+            
+            .evolution-steps {
+                flex-direction: column;
+            }
+            
+            .evolution-step:not(:last-child):after {
+                content: "↓";
+                right: 50%;
+                top: 100%;
+                transform: translateX(50%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <h1>🗺️ 家庭生活AI助手 - 产品规划</h1>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="overview.html">产品概览</a>
+                <a href="prd.html">PRD文档</a>
+                <a href="user-research.html">用户研究</a>
+                <a href="competitive-analysis.html">竞品分析</a>
+                <a href="requirements.html">需求分析</a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="doc-header">
+            <h1>产品路线图</h1>
+            <div class="subtitle">AI能力演进路径和产品发展规划</div>
+            
+            <div class="evolution-path">
+                <h3>🤖 AI能力演进路径</h3>
+                <div class="evolution-steps">
+                    <div class="evolution-step">
+                        <h4>基础对话</h4>
+                        <p>理解用户需求</p>
+                    </div>
+                    <div class="evolution-step">
+                        <h4>个性化推荐</h4>
+                        <p>学习用户偏好</p>
+                    </div>
+                    <div class="evolution-step">
+                        <h4>主动规划</h4>
+                        <p>预测建议</p>
+                    </div>
+                    <div class="evolution-step">
+                        <h4>智能生活助理</h4>
+                        <p>全场景覆盖</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>1. 发展阶段规划</h2>
+            
+            <div class="phase-card">
+                <h4>🎯 阶段一：MVP验证 (2025年Q4 - 2026年Q2)</h4>
+                
+                <div class="phase-meta">
+                    <div class="meta-item">
+                        <div class="label">核心目标</div>
+                        <div class="value">验证AI驱动的三场景产品模式</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="label">用户规模</div>
+                        <div class="value">1,000个种子家庭</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="label">团队规模</div>
+                        <div class="value">10-12人</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="label">预算</div>
+                        <div class="value">300万元</div>
+                    </div>
+                </div>
+                
+                <div class="feature-list">
+                    <h5>AI核心功能</h5>
+                    <ul>
+                        <li>基础AI对话引擎</li>
+                        <li>饮食规划 + 菜谱生成</li>
+                        <li>运动推荐 + 基础数据集成</li>
+                        <li>穿搭建议 + 天气集成</li>
+                        <li>家庭协作和数据同步</li>
+                        <li>第一个MCP服务集成（购物平台）</li>
+                    </ul>
+                </div>
+                
+                <div class="table-container">
+                    <table>
+                        <tr>
+                            <th>成功指标</th>
+                            <th>目标值</th>
+                        </tr>
+                        <tr>
+                            <td>AI满意度</td>
+                            <td>>4.0/5.0</td>
+                        </tr>
+                        <tr>
+                            <td>日活跃率</td>
+                            <td>>30%</td>
+                        </tr>
+                        <tr>
+                            <td>AI响应时间</td>
+                            <td><3秒</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="phase-card">
+                <h4>🚀 阶段二：AI能力提升 (2026年Q2 - 2027年Q2)</h4>
+                
+                <div class="phase-meta">
+                    <div class="meta-item">
+                        <div class="label">核心目标</div>
+                        <div class="value">完善AI能力，扩大用户规模</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="label">用户规模</div>
+                        <div class="value">10,000个活跃家庭</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="label">团队规模</div>
+                        <div class="value">15-18人</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="label">预算</div>
+                        <div class="value">800万元</div>
+                    </div>
+                </div>
+                
+                <div class="feature-list">
+                    <h5>AI进阶功能</h5>
+                    <ul>
+                        <li>多大模型支持和智能路由</li>
+                        <li>个性化学习和推荐优化</li>
+                        <li>健康数据深度集成</li>
+                        <li>更多MCP服务接入</li>
+                        <li>AI主动规划建议</li>
+                        <li>跨场景智能联动</li>
+                    </ul>
+                </div>
+                
+                <div class="table-container">
+                    <table>
+                        <tr>
+                            <th>成功指标</th>
+                            <th>目标值</th>
+                        </tr>
+                        <tr>
+                            <td>付费转化率</td>
+                            <td>>15%</td>
+                        </tr>
+                        <tr>
+                            <td>AI推荐准确率</td>
+                            <td>>90%</td>
+                        </tr>
+                        <tr>
+                            <td>年收入</td>
+                            <td>>100万元</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="phase-card">
+                <h4>🌐 阶段三：生态平台化 (2027年Q2 - 2028年Q2)</h4>
+                
+                <div class="phase-meta">
+                    <div class="meta-item">
+                        <div class="label">核心目标</div>
+                        <div class="value">建设AI生态，实现规模化盈利</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="label">用户规模</div>
+                        <div class="value">50,000个活跃家庭</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="label">团队规模</div>
+                        <div class="value">25-30人</div>
+                    </div>
+                    <div class="meta-item">
+                        <div class="label">预算</div>
+                        <div class="value">2000万元</div>
+                    </div>
+                </div>
+                
+                <div class="feature-list">
+                    <h5>平台化功能</h5>
+                    <ul>
+                        <li>AI能力API开放</li>
+                        <li>MCP服务生态平台</li>
+                        <li>第三方开发者生态</li>
+                        <li>智能家居设备集成</li>
+                        <li>企业级家庭服务</li>
+                        <li>AI生活助手升级</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>2. 关键里程碑</h2>
+            
+            <div class="milestone-timeline">
+                <div class="milestone-item">
+                    <div class="milestone-date">2025年Q4</div>
+                    <div class="milestone-content">
+                        <h4>MVP产品上线</h4>
+                        <p>基础AI功能完成，三场景基础规划能力上线</p>
+                    </div>
+                </div>
+                
+                <div class="milestone-item">
+                    <div class="milestone-date">2026年Q1</div>
+                    <div class="milestone-content">
+                        <h4>1000种子用户</h4>
+                        <p>AI满意度>4.0，用户反馈验证产品价值</p>
+                    </div>
+                </div>
+                
+                <div class="milestone-item">
+                    <div class="milestone-date">2026年Q2</div>
+                    <div class="milestone-content">
+                        <h4>商业模式验证</h4>
+                        <p>付费转化率>10%，基础商业模式得到验证</p>
+                    </div>
+                </div>
+                
+                <div class="milestone-item">
+                    <div class="milestone-date">2026年Q4</div>
+                    <div class="milestone-content">
+                        <h4>1万活跃家庭</h4>
+                        <p>年收入>50万，AI能力显著提升</p>
+                    </div>
+                </div>
+                
+                <div class="milestone-item">
+                    <div class="milestone-date">2027年Q2</div>
+                    <div class="milestone-content">
+                        <h4>AI能力平台化</h4>
+                        <p>开放API上线，MCP生态初步建立</p>
+                    </div>
+                </div>
+                
+                <div class="milestone-item">
+                    <div class="milestone-date">2027年Q4</div>
+                    <div class="milestone-content">
+                        <h4>5万活跃家庭</h4>
+                        <p>年收入>500万，市场地位确立</p>
+                    </div>
+                </div>
+                
+                <div class="milestone-item">
+                    <div class="milestone-date">2028年Q4</div>
+                    <div class="milestone-content">
+                        <h4>行业领导地位</h4>
+                        <p>20万活跃家庭，年收入>3000万，行业标准制定者</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="content-section">
+            <h2>3. 资源配置计划</h2>
+            
+            <div class="table-container">
+                <table>
+                    <tr>
+                        <th>阶段</th>
+                        <th>团队配置</th>
+                        <th>技术投入</th>
+                        <th>市场投入</th>
+                        <th>总预算</th>
+                    </tr>
+                    <tr>
+                        <td><strong>MVP阶段</strong></td>
+                        <td>10-12人（含AI工程师3人）</td>
+                        <td>150万元</td>
+                        <td>100万元</td>
+                        <td>300万元</td>
+                    </tr>
+                    <tr>
+                        <td><strong>成长阶段</strong></td>
+                        <td>15-18人（AI算法2人，数据1人）</td>
+                        <td>400万元</td>
+                        <td>300万元</td>
+                        <td>800万元</td>
+                    </tr>
+                    <tr>
+                        <td><strong>扩展阶段</strong></td>
+                        <td>25-30人（平台架构2人，生态合作3人）</td>
+                        <td>1200万元</td>
+                        <td>600万元</td>
+                        <td>2000万元</td>
+                    </tr>
+                </table>
+            </div>
+            
+            <h3>3.1 核心投入重点</h3>
+            <ul>
+                <li><strong>AI能力建设（40%）</strong>：大模型集成、算法优化、个性化推荐</li>
+                <li><strong>MCP生态（25%）</strong>：第三方服务集成、平台建设</li>
+                <li><strong>用户体验（20%）</strong>：极简交互、响应速度、界面设计</li>
+                <li><strong>数据安全（15%）</strong>：隐私保护、合规建设、安全架构</li>
+            </ul>
+        </div>
+    </div>
+
+    <a href="#" class="back-to-top">↑</a>
+</body>
+</html>

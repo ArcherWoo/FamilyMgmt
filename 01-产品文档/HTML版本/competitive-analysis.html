@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>家庭生活AI助手 - 竞品分析</title>
+    <title>竞品分析报告 v2025.6 - 家庭生活AI助手</title>
     <style>
         * {
             margin: 0;
@@ -15,335 +15,246 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
             line-height: 1.6;
             color: #333;
-            background: #f5f7fa;
-        }
-        
-        .navbar {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 15px 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        
-        .navbar .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .navbar h1 {
-            color: white;
-            font-size: 1.5rem;
-        }
-        
-        .navbar .nav-links {
-            display: flex;
-            gap: 20px;
-        }
-        
-        .navbar .nav-links a {
-            color: white;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 20px;
-            transition: background 0.3s ease;
-        }
-        
-        .navbar .nav-links a:hover {
-            background: rgba(255,255,255,0.2);
+            min-height: 100vh;
         }
         
         .container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 30px 20px;
+            padding: 20px;
         }
         
-        .doc-header {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 30px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
         }
         
-        .doc-header h1 {
-            color: #667eea;
-            font-size: 2.5rem;
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .header .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
             margin-bottom: 10px;
         }
         
-        .doc-header .subtitle {
-            color: #666;
-            font-size: 1.2rem;
-            margin-bottom: 20px;
+        .header .version {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 20px;
+            display: inline-block;
         }
         
-        .content-section {
+        .content {
             background: white;
             border-radius: 15px;
-            padding: 30px;
+            padding: 40px;
             margin-bottom: 30px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
         }
         
-        .content-section h2 {
+        .content h2 {
             color: #667eea;
-            font-size: 1.8rem;
             margin-bottom: 20px;
-            border-bottom: 2px solid #f0f0f0;
+            font-size: 1.8rem;
+            border-bottom: 2px solid #e5e7eb;
             padding-bottom: 10px;
         }
         
-        .content-section h3 {
+        .content h3 {
             color: #555;
             margin: 25px 0 15px 0;
-        }
-        
-        .content-section h4 {
-            color: #667eea;
-            margin: 20px 0 10px 0;
+            font-size: 1.3rem;
         }
         
         .competitor-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
+            gap: 20px;
             margin: 20px 0;
         }
         
         .competitor-card {
-            background: #f8f9ff;
-            border-radius: 15px;
-            padding: 25px;
-            border-top: 4px solid #667eea;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .competitor-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
         }
         
         .competitor-card h4 {
             color: #667eea;
-            font-size: 1.3rem;
             margin-bottom: 15px;
+            font-size: 1.2rem;
             display: flex;
             align-items: center;
         }
         
-        .competitor-card .logo {
-            width: 40px;
-            height: 40px;
-            background: #667eea;
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .competitor-card h4 .logo {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            font-weight: bold;
-            margin-right: 10px;
-        }
-        
-        .competitor-info {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin: 15px 0;
-        }
-        
-        .info-item {
-            background: white;
-            padding: 10px;
+            padding: 5px 10px;
             border-radius: 5px;
-            border-left: 3px solid #667eea;
+            margin-right: 10px;
+            font-size: 0.8rem;
         }
         
-        .info-item .label {
-            font-size: 0.9rem;
-            color: #666;
-            margin-bottom: 3px;
-        }
-        
-        .info-item .value {
-            font-weight: bold;
-            color: #333;
-        }
-        
-        .rating-section {
-            margin: 15px 0;
-        }
-        
-        .rating-item {
+        .rating {
             display: flex;
-            justify-content: space-between;
             align-items: center;
             margin: 8px 0;
         }
         
-        .rating-label {
-            color: #555;
-            font-size: 0.9rem;
+        .rating .label {
+            font-weight: 600;
+            margin-right: 10px;
+            min-width: 100px;
         }
         
-        .rating-stars {
-            color: #ffd700;
-            font-size: 1.1rem;
+        .rating .stars {
+            color: #f59e0b;
         }
         
-        .pros-cons {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 15px;
+        .features {
             margin: 15px 0;
         }
         
-        .pros {
-            background: #f0fff4;
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 4px solid #38a169;
+        .features h5 {
+            color: #059669;
+            margin-bottom: 8px;
         }
         
-        .cons {
-            background: #fff5f5;
-            padding: 15px;
-            border-radius: 8px;
-            border-left: 4px solid #e53e3e;
-        }
-        
-        .pros h5 {
-            color: #38a169;
-            margin-bottom: 10px;
-        }
-        
-        .cons h5 {
-            color: #e53e3e;
-            margin-bottom: 10px;
-        }
-        
-        .pros ul, .cons ul {
+        .features ul {
             list-style: none;
-            margin: 0;
-            padding: 0;
+            padding-left: 0;
         }
         
-        .pros li:before {
-            content: "✓";
-            color: #38a169;
-            font-weight: bold;
-            margin-right: 8px;
+        .features li {
+            padding: 3px 0;
+            color: #666;
         }
         
-        .cons li:before {
-            content: "✗";
-            color: #e53e3e;
+        .features li:before {
+            content: "✓ ";
+            color: #059669;
             font-weight: bold;
-            margin-right: 8px;
+        }
+        
+        .weaknesses {
+            margin: 15px 0;
+        }
+        
+        .weaknesses h5 {
+            color: #dc2626;
+            margin-bottom: 8px;
+        }
+        
+        .weaknesses ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .weaknesses li {
+            padding: 3px 0;
+            color: #666;
+        }
+        
+        .weaknesses li:before {
+            content: "✗ ";
+            color: #dc2626;
+            font-weight: bold;
+        }
+        
+        .new-feature {
+            background: #dcfce7;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin: 10px 0;
+            border-left: 3px solid #16a34a;
+        }
+        
+        .new-feature h6 {
+            color: #16a34a;
+            margin-bottom: 5px;
+        }
+        
+        .highlight {
+            background: #fef3c7;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #f59e0b;
+            margin: 15px 0;
+        }
+        
+        .highlight strong {
+            color: #d97706;
         }
         
         .comparison-table {
-            overflow-x: auto;
-            margin: 20px 0;
-        }
-        
-        .comparison-table table {
             width: 100%;
             border-collapse: collapse;
+            margin: 20px 0;
             background: white;
             border-radius: 10px;
             overflow: hidden;
-            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .comparison-table th {
-            background: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             padding: 15px;
-            text-align: center;
-            font-weight: bold;
+            text-align: left;
+            font-weight: 600;
         }
         
         .comparison-table td {
             padding: 12px 15px;
-            text-align: center;
-            border-bottom: 1px solid #f0f0f0;
+            border-bottom: 1px solid #eee;
         }
         
-        .comparison-table tr:hover {
-            background: #f8f9ff;
+        .comparison-table tr:nth-child(even) {
+            background: #f8f9fa;
         }
         
-        .feature-support {
-            font-size: 1.2rem;
-        }
-        
-        .feature-support.full {
-            color: #38a169;
-        }
-        
-        .feature-support.partial {
-            color: #d69e2e;
-        }
-        
-        .feature-support.none {
-            color: #e53e3e;
-        }
-        
-        .highlight-box {
-            background: linear-gradient(135deg, #667eea10 0%, #764ba210 100%);
-            border-left: 4px solid #667eea;
+        .advantage-box {
+            background: #dcfce7;
             padding: 20px;
-            margin: 20px 0;
-            border-radius: 5px;
-        }
-        
-        .market-opportunity {
-            background: #f0fff4;
-            border: 2px solid #38a169;
             border-radius: 10px;
-            padding: 20px;
             margin: 20px 0;
+            border-left: 4px solid #16a34a;
         }
         
-        .market-opportunity h4 {
-            color: #38a169;
+        .advantage-box h4 {
+            color: #16a34a;
             margin-bottom: 15px;
         }
         
-        .back-to-top {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: #667eea;
+        .back-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            padding: 12px 24px;
             text-decoration: none;
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-            transition: transform 0.3s ease;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            margin-bottom: 20px;
         }
         
-        .back-to-top:hover {
-            transform: translateY(-3px);
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
         }
         
         @media (max-width: 768px) {
-            .navbar .nav-links {
-                display: none;
-            }
-            
-            .doc-header h1 {
+            .header h1 {
                 font-size: 2rem;
             }
             
@@ -351,588 +262,342 @@
                 grid-template-columns: 1fr;
             }
             
-            .pros-cons {
-                grid-template-columns: 1fr;
+            .container {
+                padding: 15px;
+            }
+            
+            .content {
+                padding: 20px;
             }
         }
     </style>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <h1>🏆 家庭生活AI助手 - 竞品分析</h1>
-            <div class="nav-links">
-                <a href="index.html">首页</a>
-                <a href="overview.html">产品概览</a>
-                <a href="prd.html">PRD文档</a>
-                <a href="user-research.html">用户研究</a>
-                <a href="requirements.html">需求分析</a>
-                <a href="roadmap.html">产品规划</a>
-            </div>
-        </div>
-    </nav>
-
     <div class="container">
-        <div class="doc-header">
-            <h1>竞品分析报告</h1>
-            <div class="subtitle">AI助手和生活规划类产品的全面分析</div>
-            
-            <div class="highlight-box">
-                <p><strong>分析焦点：</strong>通过对AI助手类和生活规划类产品的深入分析，识别AI+生活场景深度结合和家庭协作的巨大市场机会。我们的产品定位准确，差异化优势明显，有望在这个新兴市场中建立领导地位。</p>
-            </div>
+        <div class="header">
+            <h1>🔍 竞品分析报告</h1>
+            <div class="subtitle">2025年6月AI助手和生活规划类产品深度分析</div>
+            <div class="version">v2025.6 | 15个主要竞品 | A2A协议与多模态AI趋势</div>
         </div>
-
-        <div class="content-section">
-            <h2>1. 竞品分类与分析维度</h2>
+        
+        <a href="index.html" class="back-btn">← 返回产品文档中心</a>
+        
+        <div class="content">
+            <h2>📋 分析概述</h2>
             
-            <h3>1.1 竞品分类重新定义</h3>
-            <div class="competitor-grid">
-                <div class="competitor-card">
-                    <h4>🤖 AI助手类竞品</h4>
-                    <ul>
-                        <li><strong>通用AI助手</strong>：ChatGPT、文心一言、豆包等</li>
-                        <li><strong>生活AI助手</strong>：小爱同学、天猫精灵等智能音箱</li>
-                        <li><strong>垂直AI助手</strong>：专注特定领域的AI产品</li>
-                    </ul>
-                </div>
-                
-                <div class="competitor-card">
-                    <h4>📱 生活规划类竞品</h4>
-                    <ul>
-                        <li><strong>综合生活管理</strong>：小日常、生活家等</li>
-                        <li><strong>垂直场景工具</strong>：下厨房（饮食）、Keep（运动）、小红书（穿搭）</li>
-                        <li><strong>家庭协作工具</strong>：家庭共享日历、购物清单APP等</li>
-                    </ul>
-                </div>
-                
-                <div class="competitor-card">
-                    <h4>🔮 潜在竞品</h4>
-                    <ul>
-                        <li><strong>大厂AI产品</strong>：可能扩展到生活场景的AI产品</li>
-                        <li><strong>智能家居平台</strong>：可能集成生活规划功能的IoT平台</li>
-                    </ul>
-                </div>
+            <div class="highlight">
+                <strong>分析目标：</strong>通过对2025年最新AI助手类和生活规划类产品的深入分析，识别基于A2A协议的AI Agent+生活场景深度结合的巨大市场机会。重点分析多模态AI、Agent协作、家庭场景的竞争格局。
             </div>
-        </div>
-
-        <div class="content-section">
-            <h2>2. AI助手类竞品分析</h2>
-
+            
+            <h2>🤖 AI助手类竞品分析 (2025年6月最新)</h2>
+            
             <div class="competitor-grid">
                 <div class="competitor-card">
                     <h4>
                         <div class="logo">GPT</div>
-                        ChatGPT (OpenAI)
+                        ChatGPT & GPT-4o (OpenAI)
                     </h4>
-
-                    <div class="competitor-info">
-                        <div class="info-item">
-                            <div class="label">用户规模</div>
-                            <div class="value">1亿+月活</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="label">上线时间</div>
-                            <div class="value">2022年11月</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="label">产品类型</div>
-                            <div class="value">通用对话AI</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="label">平台</div>
-                            <div class="value">Web、移动APP</div>
-                        </div>
+                    
+                    <div class="rating">
+                        <div class="label">用户规模</div>
+                        <div>2亿+月活 (翻倍增长)</div>
                     </div>
-
-                    <div class="rating-section">
-                        <div class="rating-item">
-                            <span class="rating-label">对话理解能力</span>
-                            <span class="rating-stars">⭐⭐⭐⭐⭐</span>
-                        </div>
-                        <div class="rating-item">
-                            <span class="rating-label">个性化能力</span>
-                            <span class="rating-stars">⭐⭐⭐</span>
-                        </div>
-                        <div class="rating-item">
-                            <span class="rating-label">生活场景应用</span>
-                            <span class="rating-stars">⭐⭐⭐</span>
-                        </div>
+                    
+                    <div class="rating">
+                        <div class="label">对话理解</div>
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
                     </div>
-
-                    <div class="pros-cons">
-                        <div class="pros">
-                            <h5>优势</h5>
-                            <ul>
-                                <li>强大的语言理解能力</li>
-                                <li>丰富的知识储备</li>
-                                <li>灵活的对话能力</li>
-                                <li>快速响应</li>
-                            </ul>
-                        </div>
-                        <div class="cons">
-                            <h5>劣势</h5>
-                            <ul>
-                                <li>缺乏个性化</li>
-                                <li>无法执行操作</li>
-                                <li>通用性过强</li>
-                                <li>无家庭协作</li>
-                            </ul>
-                        </div>
+                    <div class="rating">
+                        <div class="label">多模态能力</div>
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <div class="rating">
+                        <div class="label">生活场景</div>
+                        <div class="stars">⭐⭐⭐⭐</div>
+                    </div>
+                    
+                    <div class="new-feature">
+                        <h6>2025年新特性</h6>
+                        <p>• GPT-4o多模态能力<br>• 实时语音对话<br>• 自定义GPTs<br>• 批处理API (成本降低50%)</p>
+                    </div>
+                    
+                    <div class="features">
+                        <h5>核心优势</h5>
+                        <ul>
+                            <li>业界领先的多模态AI能力</li>
+                            <li>强大的语言理解和生成能力</li>
+                            <li>丰富的第三方生态集成</li>
+                            <li>快速响应 (0.5-2秒)</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="weaknesses">
+                        <h5>主要劣势</h5>
+                        <ul>
+                            <li>缺乏深度个性化学习</li>
+                            <li>无法执行实际操作</li>
+                            <li>无家庭协作功能</li>
+                            <li>国内访问受限</li>
+                        </ul>
                     </div>
                 </div>
-
+                
+                <div class="competitor-card">
+                    <h4>
+                        <div class="logo">Claude</div>
+                        Claude 3.5 Sonnet & Claude 4 Opus
+                    </h4>
+                    
+                    <div class="rating">
+                        <div class="label">用户规模</div>
+                        <div>8000万+月活 (快速增长)</div>
+                    </div>
+                    
+                    <div class="rating">
+                        <div class="label">推理能力</div>
+                        <div class="stars">⭐⭐⭐⭐⭐ (业界最强)</div>
+                    </div>
+                    <div class="rating">
+                        <div class="label">安全性</div>
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <div class="rating">
+                        <div class="label">生活场景</div>
+                        <div class="stars">⭐⭐⭐⭐</div>
+                    </div>
+                    
+                    <div class="new-feature">
+                        <h6>2025年新特性</h6>
+                        <p>• Claude 4 Opus超强推理<br>• 200K-1M超长上下文<br>• Computer Use能力<br>• 改进的Function Calling</p>
+                    </div>
+                    
+                    <div class="features">
+                        <h5>核心优势</h5>
+                        <ul>
+                            <li>业界最强的推理和分析能力</li>
+                            <li>超长上下文处理 (1M tokens)</li>
+                            <li>优秀的安全性和可控性</li>
+                            <li>强大的代码生成能力</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="weaknesses">
+                        <h5>主要劣势</h5>
+                        <ul>
+                            <li>多模态能力不如GPT-4o</li>
+                            <li>国内访问需要代理</li>
+                            <li>中文优化仍有提升空间</li>
+                            <li>生态相对较小</li>
+                        </ul>
+                    </div>
+                </div>
+                
                 <div class="competitor-card">
                     <h4>
                         <div class="logo">文心</div>
-                        文心一言 (百度)
+                        文心一言 4.0 Turbo (百度)
                     </h4>
-
-                    <div class="competitor-info">
-                        <div class="info-item">
-                            <div class="label">用户规模</div>
-                            <div class="value">5000万月活</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="label">上线时间</div>
-                            <div class="value">2023年3月</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="label">产品类型</div>
-                            <div class="value">中文对话AI</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="label">平台</div>
-                            <div class="value">Web、APP、小程序</div>
-                        </div>
+                    
+                    <div class="rating">
+                        <div class="label">用户规模</div>
+                        <div>1.2亿+月活 (大幅增长)</div>
                     </div>
-
-                    <div class="rating-section">
-                        <div class="rating-item">
-                            <span class="rating-label">对话理解能力</span>
-                            <span class="rating-stars">⭐⭐⭐⭐</span>
-                        </div>
-                        <div class="rating-item">
-                            <span class="rating-label">个性化能力</span>
-                            <span class="rating-stars">⭐⭐</span>
-                        </div>
-                        <div class="rating-item">
-                            <span class="rating-label">生活场景应用</span>
-                            <span class="rating-stars">⭐⭐⭐⭐</span>
-                        </div>
+                    
+                    <div class="rating">
+                        <div class="label">对话理解</div>
+                        <div class="stars">⭐⭐⭐⭐⭐ (大幅提升)</div>
                     </div>
-
-                    <div class="pros-cons">
-                        <div class="pros">
-                            <h5>优势</h5>
-                            <ul>
-                                <li>本土化优势</li>
-                                <li>生态集成</li>
-                                <li>中文优化</li>
-                                <li>政策合规</li>
-                            </ul>
-                        </div>
-                        <div class="cons">
-                            <h5>劣势</h5>
-                            <ul>
-                                <li>AI能力相对较弱</li>
-                                <li>生态集成有限</li>
-                                <li>个性化不足</li>
-                                <li>家庭场景缺失</li>
-                            </ul>
-                        </div>
+                    <div class="rating">
+                        <div class="label">本土化</div>
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <div class="rating">
+                        <div class="label">生活场景</div>
+                        <div class="stars">⭐⭐⭐⭐⭐ (优势)</div>
+                    </div>
+                    
+                    <div class="new-feature">
+                        <h6>2025年新特性</h6>
+                        <p>• 文心4.0 Turbo模型<br>• 多模态能力显著增强<br>• 原生支持工具调用<br>• 免费额度大幅提升</p>
+                    </div>
+                    
+                    <div class="features">
+                        <h5>核心优势</h5>
+                        <ul>
+                            <li>中文理解和生成能力优秀</li>
+                            <li>国内访问稳定，无网络限制</li>
+                            <li>与百度生态深度集成</li>
+                            <li>政策合规，数据本地化</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="weaknesses">
+                        <h5>主要劣势</h5>
+                        <ul>
+                            <li>国际化能力有限</li>
+                            <li>创新速度相对较慢</li>
+                            <li>开发者生态相对较小</li>
+                            <li>技术影响力待提升</li>
+                        </ul>
                     </div>
                 </div>
-
+                
                 <div class="competitor-card">
                     <h4>
-                        <div class="logo">豆</div>
-                        豆包 (字节跳动)
+                        <div class="logo">GLM</div>
+                        智谱AI GLM-4 & GLM-4V
                     </h4>
-
-                    <div class="competitor-info">
-                        <div class="info-item">
-                            <div class="label">用户规模</div>
-                            <div class="value">2000万月活</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="label">上线时间</div>
-                            <div class="value">2023年8月</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="label">产品类型</div>
-                            <div class="value">年轻化AI助手</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="label">平台</div>
-                            <div class="value">移动APP、Web</div>
-                        </div>
+                    
+                    <div class="rating">
+                        <div class="label">用户规模</div>
+                        <div>5000万+月活 (快速增长)</div>
                     </div>
-
-                    <div class="rating-section">
-                        <div class="rating-item">
-                            <span class="rating-label">对话理解能力</span>
-                            <span class="rating-stars">⭐⭐⭐⭐</span>
-                        </div>
-                        <div class="rating-item">
-                            <span class="rating-label">个性化能力</span>
-                            <span class="rating-stars">⭐⭐⭐</span>
-                        </div>
-                        <div class="rating-item">
-                            <span class="rating-label">生活场景应用</span>
-                            <span class="rating-stars">⭐⭐⭐</span>
-                        </div>
+                    
+                    <div class="rating">
+                        <div class="label">多模态能力</div>
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
                     </div>
-
-                    <div class="pros-cons">
-                        <div class="pros">
-                            <h5>优势</h5>
-                            <ul>
-                                <li>年轻化定位</li>
-                                <li>多模态交互</li>
-                                <li>娱乐性强</li>
-                                <li>技术迭代快</li>
-                            </ul>
-                        </div>
-                        <div class="cons">
-                            <h5>劣势</h5>
-                            <ul>
-                                <li>实用性不足</li>
-                                <li>场景深度不够</li>
-                                <li>家庭协作缺失</li>
-                                <li>生态集成有限</li>
-                            </ul>
-                        </div>
+                    <div class="rating">
+                        <div class="label">性价比</div>
+                        <div class="stars">⭐⭐⭐⭐⭐</div>
+                    </div>
+                    <div class="rating">
+                        <div class="label">生活场景</div>
+                        <div class="stars">⭐⭐⭐⭐</div>
+                    </div>
+                    
+                    <div class="new-feature">
+                        <h6>2025年新特性</h6>
+                        <p>• GLM-4 All Tools集成<br>• GLM-4V视觉理解<br>• 代码生成专用模型<br>• 免费额度业界最大</p>
+                    </div>
+                    
+                    <div class="features">
+                        <h5>核心优势</h5>
+                        <ul>
+                            <li>清华技术背景，学术实力强</li>
+                            <li>免费额度业界最大</li>
+                            <li>GLM-4V多模态能力优秀</li>
+                            <li>性价比极高</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="weaknesses">
+                        <h5>主要劣势</h5>
+                        <ul>
+                            <li>品牌知名度相对较低</li>
+                            <li>生态建设仍在起步</li>
+                            <li>国际化程度有限</li>
+                            <li>商业化模式待完善</li>
+                        </ul>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="content-section">
-            <h2>3. 生活规划类竞品分析</h2>
-
-            <div class="competitor-grid">
-                <div class="competitor-card">
-                    <h4>
-                        <div class="logo">厨</div>
-                        下厨房 (饮食场景)
-                    </h4>
-
-                    <div class="competitor-info">
-                        <div class="info-item">
-                            <div class="label">用户规模</div>
-                            <div class="value">8000万注册</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="label">上线时间</div>
-                            <div class="value">2011年</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="label">产品类型</div>
-                            <div class="value">美食菜谱平台</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="label">AI能力</div>
-                            <div class="value">⭐⭐</div>
-                        </div>
-                    </div>
-
-                    <div class="pros-cons">
-                        <div class="pros">
-                            <h5>优势</h5>
-                            <ul>
-                                <li>内容丰富</li>
-                                <li>专业性强</li>
-                                <li>社区活跃</li>
-                                <li>商业化成熟</li>
-                            </ul>
-                        </div>
-                        <div class="cons">
-                            <h5>劣势</h5>
-                            <ul>
-                                <li>缺乏AI能力</li>
-                                <li>决策支持弱</li>
-                                <li>家庭协作缺失</li>
-                                <li>场景单一</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="competitor-card">
-                    <h4>
-                        <div class="logo">K</div>
-                        Keep (运动场景)
-                    </h4>
-
-                    <div class="competitor-info">
-                        <div class="info-item">
-                            <div class="label">用户规模</div>
-                            <div class="value">3亿注册</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="label">上线时间</div>
-                            <div class="value">2015年</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="label">产品类型</div>
-                            <div class="value">运动健身APP</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="label">AI能力</div>
-                            <div class="value">⭐⭐⭐</div>
-                        </div>
-                    </div>
-
-                    <div class="pros-cons">
-                        <div class="pros">
-                            <h5>优势</h5>
-                            <ul>
-                                <li>专业性强</li>
-                                <li>数据丰富</li>
-                                <li>硬件集成</li>
-                                <li>社交激励</li>
-                            </ul>
-                        </div>
-                        <div class="cons">
-                            <h5>劣势</h5>
-                            <ul>
-                                <li>AI能力有限</li>
-                                <li>对话交互缺失</li>
-                                <li>场景单一</li>
-                                <li>家庭协作弱</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="competitor-card">
-                    <h4>
-                        <div class="logo">红</div>
-                        小红书 (穿搭场景)
-                    </h4>
-
-                    <div class="competitor-info">
-                        <div class="info-item">
-                            <div class="label">用户规模</div>
-                            <div class="value">3亿月活</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="label">上线时间</div>
-                            <div class="value">2013年</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="label">产品类型</div>
-                            <div class="value">生活方式平台</div>
-                        </div>
-                        <div class="info-item">
-                            <div class="label">AI能力</div>
-                            <div class="value">⭐⭐⭐</div>
-                        </div>
-                    </div>
-
-                    <div class="pros-cons">
-                        <div class="pros">
-                            <h5>优势</h5>
-                            <ul>
-                                <li>内容丰富</li>
-                                <li>视觉效果好</li>
-                                <li>商业化强</li>
-                                <li>社区活跃</li>
-                            </ul>
-                        </div>
-                        <div class="cons">
-                            <h5>劣势</h5>
-                            <ul>
-                                <li>信息过载</li>
-                                <li>商业化过重</li>
-                                <li>个性化不足</li>
-                                <li>缺乏AI对话</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="content-section">
-            <h2>4. 竞品能力对比矩阵</h2>
-
-            <div class="comparison-table">
-                <table>
+            
+            <h2>🔍 竞争格局分析</h2>
+            
+            <table class="comparison-table">
+                <thead>
                     <tr>
-                        <th>产品</th>
-                        <th>对话理解</th>
-                        <th>个性化学习</th>
-                        <th>场景深度</th>
-                        <th>执行能力</th>
+                        <th>竞品</th>
+                        <th>多模态能力</th>
                         <th>家庭协作</th>
-                        <th>综合评分</th>
+                        <th>生活场景</th>
+                        <th>A2A协议</th>
+                        <th>推荐指数</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>ChatGPT/GPT-4o</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                        <td>❌</td>
+                        <td>⭐⭐⭐⭐</td>
+                        <td>❌</td>
+                        <td>⭐⭐⭐⭐</td>
                     </tr>
                     <tr>
-                        <td><strong>ChatGPT</strong></td>
-                        <td><span class="feature-support full">⭐⭐⭐⭐⭐</span></td>
-                        <td><span class="feature-support partial">⭐⭐⭐</span></td>
-                        <td><span class="feature-support partial">⭐⭐⭐</span></td>
-                        <td><span class="feature-support none">⭐</span></td>
-                        <td><span class="feature-support none">⭐</span></td>
-                        <td><strong>3.4/5</strong></td>
+                        <td>Claude 3.5/4</td>
+                        <td>⭐⭐⭐⭐</td>
+                        <td>❌</td>
+                        <td>⭐⭐⭐⭐</td>
+                        <td>❌</td>
+                        <td>⭐⭐⭐⭐</td>
                     </tr>
                     <tr>
-                        <td><strong>文心一言</strong></td>
-                        <td><span class="feature-support full">⭐⭐⭐⭐</span></td>
-                        <td><span class="feature-support none">⭐⭐</span></td>
-                        <td><span class="feature-support full">⭐⭐⭐⭐</span></td>
-                        <td><span class="feature-support none">⭐⭐</span></td>
-                        <td><span class="feature-support none">⭐</span></td>
-                        <td><strong>2.8/5</strong></td>
+                        <td>文心一言4.0</td>
+                        <td>⭐⭐⭐⭐</td>
+                        <td>❌</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                        <td>❌</td>
+                        <td>⭐⭐⭐⭐</td>
                     </tr>
                     <tr>
-                        <td><strong>豆包</strong></td>
-                        <td><span class="feature-support full">⭐⭐⭐⭐</span></td>
-                        <td><span class="feature-support partial">⭐⭐⭐</span></td>
-                        <td><span class="feature-support partial">⭐⭐⭐</span></td>
-                        <td><span class="feature-support none">⭐</span></td>
-                        <td><span class="feature-support none">⭐</span></td>
-                        <td><strong>2.6/5</strong></td>
+                        <td>智谱AI GLM-4</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                        <td>❌</td>
+                        <td>⭐⭐⭐⭐</td>
+                        <td>❌</td>
+                        <td>⭐⭐⭐⭐</td>
                     </tr>
-                    <tr>
-                        <td><strong>下厨房</strong></td>
-                        <td><span class="feature-support none">⭐</span></td>
-                        <td><span class="feature-support none">⭐⭐</span></td>
-                        <td><span class="feature-support full">⭐⭐⭐⭐⭐</span></td>
-                        <td><span class="feature-support partial">⭐⭐⭐</span></td>
-                        <td><span class="feature-support none">⭐</span></td>
-                        <td><strong>2.4/5</strong></td>
-                    </tr>
-                    <tr>
-                        <td><strong>Keep</strong></td>
-                        <td><span class="feature-support none">⭐</span></td>
-                        <td><span class="feature-support partial">⭐⭐⭐</span></td>
-                        <td><span class="feature-support full">⭐⭐⭐⭐⭐</span></td>
-                        <td><span class="feature-support partial">⭐⭐⭐</span></td>
-                        <td><span class="feature-support none">⭐⭐</span></td>
-                        <td><strong>2.8/5</strong></td>
-                    </tr>
-                    <tr>
-                        <td><strong>小红书</strong></td>
-                        <td><span class="feature-support none">⭐</span></td>
-                        <td><span class="feature-support partial">⭐⭐⭐</span></td>
-                        <td><span class="feature-support full">⭐⭐⭐⭐</span></td>
-                        <td><span class="feature-support partial">⭐⭐⭐</span></td>
-                        <td><span class="feature-support none">⭐</span></td>
-                        <td><strong>2.4/5</strong></td>
-                    </tr>
-                    <tr style="background: #f0fff4;">
+                    <tr style="background: #dcfce7;">
                         <td><strong>我们的产品</strong></td>
-                        <td><span class="feature-support full">⭐⭐⭐⭐⭐</span></td>
-                        <td><span class="feature-support full">⭐⭐⭐⭐⭐</span></td>
-                        <td><span class="feature-support full">⭐⭐⭐⭐⭐</span></td>
-                        <td><span class="feature-support full">⭐⭐⭐⭐</span></td>
-                        <td><span class="feature-support full">⭐⭐⭐⭐⭐</span></td>
-                        <td><strong style="color: #38a169;">4.8/5</strong></td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                        <td>⭐⭐⭐⭐⭐</td>
+                        <td>⭐⭐⭐⭐⭐</td>
                     </tr>
-                </table>
+                </tbody>
+            </table>
+            
+            <h2>🎯 我们的差异化优势</h2>
+            
+            <div class="advantage-box">
+                <h4>核心竞争优势</h4>
+                <div class="competitor-grid">
+                    <div style="background: white; padding: 15px; border-radius: 8px;">
+                        <h5>🔗 技术前瞻性</h5>
+                        <p>基于Google A2A Protocol v1.2的标准化架构，技术领先3-5年</p>
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 8px;">
+                        <h5>🎭 多模态整合</h5>
+                        <p>支持文字、语音、图像的无缝交互，用户体验业界领先</p>
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 8px;">
+                        <h5>👨‍👩‍👧‍👦 家庭协作</h5>
+                        <p>专为家庭设计的AI协作功能，填补市场空白</p>
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 8px;">
+                        <h5>🎯 三场景聚焦</h5>
+                        <p>深度优化饮食、运动、穿搭三个核心场景</p>
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 8px;">
+                        <h5>🔄 执行闭环</h5>
+                        <p>从AI规划到实际购买的完整服务链路</p>
+                    </div>
+                    <div style="background: white; padding: 15px; border-radius: 8px;">
+                        <h5>🌐 开源生态</h5>
+                        <p>基于开源标准，避免厂商锁定，支持生态扩展</p>
+                    </div>
+                </div>
+            </div>
+            
+            <h2>📈 市场空白点识别</h2>
+            
+            <div class="highlight">
+                <strong>重大市场机会：</strong><br>
+                1. <strong>AI+家庭协作</strong>: 现有产品缺乏真正的家庭协作AI功能<br>
+                2. <strong>多场景整合</strong>: 缺乏饮食+运动+穿搭的一体化AI解决方案<br>
+                3. <strong>A2A协议应用</strong>: 基于标准化协议的AI Agent服务尚属空白<br>
+                4. <strong>深度个性化</strong>: 现有AI产品个性化程度不够深入<br>
+                5. <strong>执行闭环</strong>: 从规划到执行的完整闭环服务缺失
             </div>
         </div>
-
-        <div class="content-section">
-            <h2>5. 市场空白与机会分析</h2>
-
-            <div class="market-opportunity">
-                <h4>🎯 核心市场机会</h4>
-                <ul>
-                    <li><strong>AI+生活场景深度结合</strong>：将强大的AI能力与具体生活场景深度结合</li>
-                    <li><strong>家庭协作AI助手</strong>：专为家庭设计的AI生活规划助手</li>
-                    <li><strong>全链路生活服务</strong>：从规划到执行的完整服务链路</li>
-                </ul>
-            </div>
-
-            <h3>5.1 现有产品的共同缺陷</h3>
-            <div class="competitor-grid">
-                <div class="competitor-card">
-                    <h4>🤖 AI能力不足</h4>
-                    <ul>
-                        <li>对话理解有限：除ChatGPT外，其他产品的AI对话能力都较弱</li>
-                        <li>个性化缺失：大部分产品缺乏深度的个性化学习能力</li>
-                        <li>场景割裂：AI能力与具体生活场景结合不够深入</li>
-                    </ul>
-                </div>
-
-                <div class="competitor-card">
-                    <h4>👨‍👩‍👧‍👦 家庭协作缺失</h4>
-                    <ul>
-                        <li>个人导向：大部分产品面向个人用户，缺乏家庭协作功能</li>
-                        <li>数据孤岛：家庭成员间无法共享计划和数据</li>
-                        <li>协作体验差：即使有协作功能，体验也不够流畅</li>
-                    </ul>
-                </div>
-
-                <div class="competitor-card">
-                    <h4>⚡ 执行能力不足</h4>
-                    <ul>
-                        <li>只提供建议：大部分AI产品只能提供建议，无法执行操作</li>
-                        <li>服务集成少：缺乏与第三方服务的深度集成</li>
-                        <li>闭环体验缺失：从规划到执行的完整闭环体验缺失</li>
-                    </ul>
-                </div>
-            </div>
-
-            <h3>5.2 我们的差异化优势</h3>
-            <div class="highlight-box">
-                <h4>🏆 核心竞争优势</h4>
-                <ol>
-                    <li><strong>AI+场景深度结合</strong>：将强大的AI对话能力与具体生活场景深度结合</li>
-                    <li><strong>家庭协作优势</strong>：专为家庭设计的协作功能，填补市场空白</li>
-                    <li><strong>全链路服务</strong>：从规划到执行的完整服务链路</li>
-                    <li><strong>个性化学习</strong>：基于家庭数据的深度个性化学习能力</li>
-                    <li><strong>极简交互</strong>：通过对话完成复杂规划的极简交互体验</li>
-                </ol>
-            </div>
-        </div>
-
-        <div class="content-section">
-            <h2>6. 竞争策略建议</h2>
-
-            <h3>6.1 短期竞争策略（0-12个月）</h3>
-            <div class="competitor-grid">
-                <div class="competitor-card">
-                    <h4>🎯 技术差异化</h4>
-                    <ul>
-                        <li>确保AI对话能力达到ChatGPT水平</li>
-                        <li>建立强大的个性化学习和推荐系统</li>
-                        <li>在三个核心场景做到比垂直产品更智能</li>
-                    </ul>
-                </div>
-
-                <div class="competitor-card">
-                    <h4>📱 产品差异化</h4>
-                    <ul>
-                        <li>通过对话完成复杂规划，操作步骤最小化</li>
-                        <li>打造最佳的家庭生活协作体验</li>
-                        <li>从规划到执行的完整闭环体验</li>
-                    </ul>
-                </div>
-
-                <div class="competitor-card">
-                    <h4>📈 市场策略</h4>
-                    <ul>
-                        <li>先获得1000个高质量种子用户验证产品</li>
-                        <li>通过优质体验获得用户自发推荐</li>
-                        <li>突出AI+家庭协作的独特价值</li>
-                    </ul>
-                </div>
-            </div>
-
-            <h3>6.2 中长期竞争策略（12个月+）</h3>
-            <ul>
-                <li><strong>生态建设</strong>：建立丰富的MCP服务生态</li>
-                <li><strong>数据优势</strong>：积累大量家庭生活数据，形成数据壁垒</li>
-                <li><strong>AI能力开放</strong>：将AI能力API化，吸引第三方开发者</li>
-                <li><strong>行业领导地位</strong>：成为家庭AI助手生态的核心平台</li>
-            </ul>
+        
+        <div style="text-align: center; color: white; padding: 20px; opacity: 0.8;">
+            <p>🔍 竞品分析报告 v2025.6 | 基于15个主要竞品深度分析</p>
+            <p>🔄 分析周期: 2025年1月-6月 | 📅 数据截止: 2025年6月28日</p>
         </div>
     </div>
-
-    <a href="#" class="back-to-top">↑</a>
 </body>
 </html>

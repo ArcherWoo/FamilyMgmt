@@ -1,4 +1,4 @@
-# 家庭生活AI助手 - 技术文档中心 📚 v5.0
+# 家庭生活AI助手 - 技术文档中心 📚 v6.0
 
 ## 🎯 快速导航
 
@@ -7,8 +7,8 @@
 
 🌐 **[点击这里打开HTML版本](./HTML版本/index.html)**
 
-- 🚀 [技术架构设计 v5.0](./HTML版本/architecture-v5.html) - 2025年最先进系统架构
-- 🤖 [A2A + LangGraph方案 v5.0](./HTML版本/a2a-langgraph-v5.html) - 标准化Agent通信与编排
+- 🚀 [技术架构设计 v6.0](./HTML版本/architecture-v5.html) - A2A + MCP双引擎架构
+- 🤖 [A2A + MCP双引擎方案 v6.0](./HTML版本/a2a-langgraph-v5.html) - 协议互补，优势融合
 - 🧩 [模块拆解方案](./HTML版本/modules.html) - 8个核心模块详细拆解
 - 📋 [开发任务分解](./HTML版本/tasks.html) - 详细开发任务分解
 - ✅ [交付检查清单](./HTML版本/checklist.html) - 质量交付标准
@@ -25,18 +25,17 @@
 - 🏗️ [技术架构设计 v4.0 (已归档)](./旧版本归档/architecture-v4.html)
 - 🤖 [A2A + LangGraph方案 v4.0 (已归档)](./旧版本归档/a2a-langgraph-v4.html)
 
-## 🚀 技术架构概览 v5.0
+## 🚀 A2A + MCP双引擎架构概览 v6.0
 
-### 核心特点 (2025年最新)
-- **🌐 A2A协议**: Google A2A Protocol v1.2，标准化Agent通信
-- **🧠 LangGraph编排**: 状态机驱动的工作流编排引擎
+### 双引擎核心特点 (2025年最新)
+- **🔗 A2A协议引擎**: Google A2A Protocol v1.2，负责Agent间智能协作
+- **🌐 MCP服务引擎**: Model Context Protocol v1.0，负责外部服务集成
+- **⚡ 融合层**: LangGraph 0.2 + 智能路由 + 缓存优化
 - **🤖 多模型组合**: Claude 3.5/4 + GPT-4o + Gemini 1.5 Pro
 - **☁️ 云原生部署**: Kubernetes 1.30 + Docker 25
 - **🔒 企业级安全**: OAuth 2.1 + mTLS + RBAC
-- **🤖 AI驱动**: 多AI模型智能路由，成本与质量平衡  
-- **🔌 MCP生态**: 基于MCP协议的第三方服务集成
-- **☁️ 云原生**: Kubernetes容器化部署，支持弹性扩缩容
-- **🔐 安全第一**: 多层安全防护，符合隐私保护法规
+- **📈 性能优化**: 成本优化30-50%，响应时间<2秒
+- **🚀 核心理念**: 协议互补，优势融合，业界首个双引擎架构
 
 ### 技术栈 (v3.0 先进版)
 | 层级 | 核心技术 | 先进特性 | 说明 |

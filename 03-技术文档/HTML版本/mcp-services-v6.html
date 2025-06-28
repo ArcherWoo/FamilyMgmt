@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP服务集成方案 v6.0 - 家庭生活AI助手</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #059669 0%, #0891b2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 10px;
+        }
+        
+        .version {
+            font-size: 1rem;
+            opacity: 0.8;
+            background: rgba(255,255,255,0.2);
+            padding: 8px 16px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+        
+        .back-btn {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        
+        .content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section h2 {
+            color: #059669;
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #059669;
+        }
+        
+        .section h3 {
+            color: #0891b2;
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            margin-top: 25px;
+        }
+        
+        .mcp-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .mcp-card {
+            background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+            border: 2px solid #059669;
+            border-radius: 15px;
+            padding: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .mcp-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(5, 150, 105, 0.2);
+        }
+        
+        .mcp-card h4 {
+            color: #059669;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+        
+        .mcp-card .tools {
+            background: #f0fdf4;
+            border-radius: 8px;
+            padding: 10px;
+            margin: 10px 0;
+        }
+        
+        .mcp-card .tools h5 {
+            color: #065f46;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        .mcp-card .tools ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .mcp-card .tools li {
+            color: #047857;
+            font-size: 0.85rem;
+            margin-bottom: 3px;
+            padding-left: 15px;
+            position: relative;
+        }
+        
+        .mcp-card .tools li:before {
+            content: "🔧";
+            position: absolute;
+            left: 0;
+        }
+        
+        .architecture-diagram {
+            background: #f8fafc;
+            border: 2px solid #e2e8f0;
+            border-radius: 15px;
+            padding: 20px;
+            margin: 20px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            overflow-x: auto;
+        }
+        
+        .highlight {
+            background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+            border-left: 4px solid #f59e0b;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .feature-item {
+            background: #f0f9ff;
+            border: 1px solid #0891b2;
+            border-radius: 10px;
+            padding: 15px;
+            text-align: center;
+        }
+        
+        .feature-item .icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+        
+        .feature-item h4 {
+            color: #0891b2;
+            margin-bottom: 8px;
+        }
+        
+        .feature-item p {
+            font-size: 0.9rem;
+            color: #0c4a6e;
+        }
+        
+        .footer {
+            text-align: center;
+            color: white;
+            margin-top: 40px;
+            opacity: 0.8;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .mcp-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌐 MCP服务集成方案</h1>
+            <div class="subtitle">Model Context Protocol - 标准化外部服务集成</div>
+            <div class="version">v6.0 | MCP v1.0 | 双引擎架构核心组件</div>
+        </div>
+        
+        <a href="index.html" class="back-btn">← 返回技术文档中心</a>
+        
+        <div class="content">
+            <div class="section">
+                <h2>🎯 MCP协议概述</h2>
+                <div class="highlight">
+                    <strong>Model Context Protocol (MCP)</strong> 是由Anthropic主导开发的开源协议，专门用于AI模型与外部数据源和工具的标准化连接。在A2A + MCP双引擎架构中，MCP负责外部服务集成，与A2A协议形成完美互补。
+                </div>
+                
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <div class="icon">🔗</div>
+                        <h4>标准化接口</h4>
+                        <p>统一的数据获取和工具调用接口</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="icon">🔒</div>
+                        <h4>安全可靠</h4>
+                        <p>内置安全机制和错误处理</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="icon">🚀</div>
+                        <h4>易于扩展</h4>
+                        <p>支持自定义工具和资源</p>
+                    </div>
+                    <div class="feature-item">
+                        <div class="icon">🌍</div>
+                        <h4>社区支持</h4>
+                        <p>活跃的开源社区和丰富的生态</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>🏗️ MCP服务架构</h2>
+                <div class="architecture-diagram">
+┌─────────────────────────────────────────────────────────────────┐
+│                    🌐 MCP服务注册中心                           │
+│              MCP Server Registry + 服务发现                     │
+│  ┌─────────────┬─────────────┬─────────────┬─────────────────┐  │
+│  │  服务注册   │  健康检查   │  负载均衡   │  版本管理       │  │
+│  └─────────────┴─────────────┴─────────────┴─────────────────┘  │
+└─────────────────────────────────────────────────────────────────┘
+                              │
+                              ▼
+┌─────────────────────────────────────────────────────────────────┐
+│                    🔌 MCP客户端层                               │
+│              统一的MCP协议客户端和连接管理                       │
+│  ┌─────────────┬─────────────┬─────────────┬─────────────────┐  │
+│  │  连接池     │  重试机制   │  缓存管理   │  监控统计       │  │
+│  └─────────────┴─────────────┴─────────────┴─────────────────┘  │
+└─────────────────────────────────────────────────────────────────┘
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>🛠️ MCP服务集群</h2>
+                <div class="mcp-grid">
+                    <div class="mcp-card">
+                        <h4>🥗 营养数据库MCP</h4>
+                        <p>USDA食物数据库、中国食物成分表集成</p>
+                        <div class="tools">
+                            <h5>Tools:</h5>
+                            <ul>
+                                <li>食物营养查询</li>
+                                <li>营养成分分析</li>
+                                <li>膳食建议生成</li>
+                                <li>过敏原检测</li>
+                            </ul>
+                        </div>
+                        <div class="tools">
+                            <h5>Resources:</h5>
+                            <ul>
+                                <li>食物数据库</li>
+                                <li>营养标准</li>
+                                <li>膳食指南</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="mcp-card">
+                        <h4>🌤️ 天气服务MCP</h4>
+                        <p>和风天气、OpenWeatherMap API集成</p>
+                        <div class="tools">
+                            <h5>Tools:</h5>
+                            <ul>
+                                <li>当前天气查询</li>
+                                <li>天气预报获取</li>
+                                <li>生活指数查询</li>
+                                <li>气象预警推送</li>
+                            </ul>
+                        </div>
+                        <div class="tools">
+                            <h5>Resources:</h5>
+                            <ul>
+                                <li>气象数据</li>
+                                <li>历史天气</li>
+                                <li>气候统计</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="mcp-card">
+                        <h4>🛒 购物平台MCP</h4>
+                        <p>淘宝、京东、美团等电商平台集成</p>
+                        <div class="tools">
+                            <h5>Tools:</h5>
+                            <ul>
+                                <li>商品搜索</li>
+                                <li>价格比较</li>
+                                <li>库存查询</li>
+                                <li>优惠券获取</li>
+                            </ul>
+                        </div>
+                        <div class="tools">
+                            <h5>Resources:</h5>
+                            <ul>
+                                <li>商品目录</li>
+                                <li>用户偏好</li>
+                                <li>购买历史</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="mcp-card">
+                        <h4>💪 健康数据MCP</h4>
+                        <p>用户健康档案、运动数据管理</p>
+                        <div class="tools">
+                            <h5>Tools:</h5>
+                            <ul>
+                                <li>健康数据记录</li>
+                                <li>运动数据分析</li>
+                                <li>健康趋势预测</li>
+                                <li>异常数据告警</li>
+                            </ul>
+                        </div>
+                        <div class="tools">
+                            <h5>Resources:</h5>
+                            <ul>
+                                <li>健康档案</li>
+                                <li>运动记录</li>
+                                <li>体征数据</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>⚡ 双引擎协同</h2>
+                <h3>🔗 A2A协议引擎</h3>
+                <p>负责Agent间的智能协作和通信，处理复杂的多Agent工作流编排。</p>
+                
+                <h3>🌐 MCP服务引擎</h3>
+                <p>负责外部数据源和服务的标准化集成，提供丰富的数据支持。</p>
+                
+                <h3>⚡ 融合层</h3>
+                <p>智能路由、数据融合、缓存优化，实现两个引擎的完美协同。</p>
+                
+                <div class="highlight">
+                    <strong>协议互补，优势融合</strong>：A2A专注Agent协作，MCP专注数据服务，双引擎协同工作实现1+1>2的效果，成本优化30-50%。
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>📅 最后更新: 2025-06-28 | 📖 版本: v6.0 | 🌐 MCP协议: v1.0</p>
+            <p>🚀 A2A + MCP双引擎架构 | 协议互补，优势融合</p>
+        </div>
+    </div>
+</body>
+</html>
